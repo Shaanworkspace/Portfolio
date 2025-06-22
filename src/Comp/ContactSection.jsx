@@ -1,78 +1,52 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { CONTACT } from '../constants';
 
 const ContactSection = () => {
-    // Variants for staggered animation within the section
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1, // Delay between child animations
-            },
-        },
-    };
-
-    // Variants for individual elements within the section
-    const itemVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
-            },
-        },
-    };
-
-    const socialLinks = [
-        { name: 'GitHub', link: 'https://github.com/Shaanworkspace' },
-        { name: 'LinkedIn', link: 'https://linkedin.com/in/your-linkedin' },
-        { name: 'LeetCode', link: 'https://leetcode.com/your-leetcode' },
-        { name: 'HackerRank', link: 'https://hackerrank.com/your-hackerrank' },
-        { name: 'CodeChef', link: 'https://codechef.com/your-codechef' },
-    ];
-
     return (
-        <motion.section
-            id="contact"
-            className="py-16 px-4 bg-gradient-to-b from-indigo-50 to-purple-50 relative z-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-        >
-            <div className="max-w-6xl mx-auto text-center">
-                <motion.h2 className="text-4xl font-bold text-gray-800" variants={itemVariants}>
-                    Get in Touch
-                </motion.h2>
-                <motion.p className="text-gray-600 mt-4 text-lg" variants={itemVariants}>
-                    Interested in collaborating or hiring me? Reach out!
-                </motion.p>
-                <motion.p className="text-gray-600 mt-3 text-lg" variants={itemVariants}>
-                    Email: <a href="mailto:shaanyworkspace@gmail.com" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300 hover:underline">shaanyworkspace@gmail.com</a>
-                </motion.p>
-                <div className="flex justify-center space-x-6 mt-8">
-                    {socialLinks.map((platform) => (
-                        <motion.a
-                            key={platform.name}
-                            href={platform.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-700 font-medium hover:text-indigo-600 transition-colors duration-300 relative group"
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            {platform.name}
-                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                        </motion.a>
-                    ))}
-                </div>
+        <div className="container mx-auto px-4 py-12">
+            <h2 className="text-3xl font-bold text-white text-center mb-8">
+                Get in Touch
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                {/* Address */}
+                <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-neutral-900 p-6 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-700"
+                >
+                    <div className="flex items-center mb-4">
+                        <FaMapMarkerAlt className="text-purple-400 text-2xl mr-3" />
+                        <h3 className="text-lg font-semibold text-white">Address</h3>
+                    </div>
+                    <p className="text-neutral-300 text-sm">{CONTACT.address}</p>
+                </a>
+
+                {/* Phone Number */}
+                <a
+                    href={`tel:${CONTACT.phoneNo}`}
+                    className="group bg-neutral-900 p-6 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-700"
+                >
+                    <div className="flex items-center mb-4">
+                        <FaPhoneAlt className="text-purple-400 text-2xl mr-3" />
+                        <h3 className="text-lg font-semibold text-white">Phone</h3>
+                    </div>
+                    <p className="text-neutral-300 text-sm">{CONTACT.phoneNo}</p>
+                </a>
+
+                {/* Email */}
+                <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="group bg-neutral-900 p-6 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-purple-700"
+                >
+                    <div className="flex items-center mb-4">
+                        <FaEnvelope className="text-purple-400 text-2xl mr-3" />
+                        <h3 className="text-lg font-semibold text-white">Email</h3>
+                    </div>
+                    <p className="text-neutral-300 text-sm">{CONTACT.email}</p>
+                </a>
             </div>
-        </motion.section>
+        </div>
     );
 };
 

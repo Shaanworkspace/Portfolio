@@ -1,68 +1,58 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
+import React from 'react'
+import { HERO_CONTENT } from '../constants'
+import shaanPhoto from "../assets/shaanProfilePhoto.jpg"
+import { motion } from "motion/react"
 const HeroSection = () => {
-    // Variants for staggered animation
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2, // Delay between child animations
-            },
-        },
-    };
-
-    // Variants for individual elements
-    const itemVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
-            },
-        },
-    };
-
     return (
-        <motion.section
-            className="relative pt-28 pb-16 px-4 text-center z-10 min-h-screen flex flex-col justify-center items-center"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-        >
-            <motion.h2
-                className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-purple-700"
-                variants={itemVariants}
-            >
-                Hi, I'm Shaan Yadav
-            </motion.h2>
-            <motion.p
-                className="text-xl md:text-2xl text-gray-700 mt-4 font-medium max-w-3xl"
-                variants={itemVariants}
-            >
-                Passionate Application Developer | Java, ReactJS, AI & ML
-            </motion.p>
-            <motion.p
-                className="text-base md:text-lg text-gray-600 mt-3 max-w-2xl mx-auto px-4"
-                variants={itemVariants}
-            >
-                2nd-year BTech student at KIET Group of Institutions, building innovative solutions and solving problems with code.
-            </motion.p>
-            <motion.a
-                href="#projects"
-                className="mt-8 inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)" }}
-                whileTap={{ scale: 0.95 }}
-            >
-                View My Work
-            </motion.a>
-        </motion.section>
-    );
-};
+        <div className='border-b border-neutral-900 pb-2 lg:mb-32 -mt-12 lg:mt-0'>
+            <div className='flex flex-wrap'>
+                <div className='w-full lg:w-1/2'>
+                    <div className='flex flex-col items-center lg:items-start'>
+                        <motion.h1
+                            
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                            className='pb-8 lg:pb-10 text-6xl font-thin tracking-tight  lg:mt-16 lg:text-6xl'>Shaan Yadav</motion.h1>
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                            className="text-transparent tracking-tight bg-gradient-to-r from-pink-400 via-slate-500 to-purple-500 bg-clip-text text-3xl"
+                        >
+                            Full Stack Developer
+                        </motion.span>
+                        <motion.p initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 2, ease: "easeOut" }} className='my-4 max-w-xl py-4 font-light tracking-tighter'>{HERO_CONTENT.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
+                        </motion.p>
+                    </div>
+                </div>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 60 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    className="w-full lg:w-1/2 lg:p-4 my-6 lg:my-4 lg:-mt-6"
+                >
+                    <div className="flex justify-center">
+                        <img
+                            src={shaanPhoto}
+                            alt="Shaan Photo"
+                            className="rounded-2xl 
+             shadow-[0_0_30px_rgba(147,51,234,0.4)] 
+             hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]
+             transition-shadow duration-500 h-90 w-100 lg:h-110 lg:w-120 object-cover"
+                        />
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+    )
+}
 
-export default HeroSection;
+export default HeroSection

@@ -1,50 +1,106 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import aboutImage from '../assets/about.jpg';
+import { ABOUT_TEXT } from '../constants';
 
 const AboutSection = () => {
-    // Variants for staggered animation within the section
-    const containerVariants = {
-        hidden: { opacity: 0 },
+
+    // Animation variants for the image
+    const imageVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.1, // Delay between child animations
-            },
+            scale: 1,
+            transition: { duration: 0.8, ease: 'easeOut' }
+        },
+        hover: {
+            scale: 1.05, // Subtle scale on hover
+            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)', // Professional shadow
+            transition: { duration: 0.3, ease: 'easeOut' },
         },
     };
 
-    // Variants for individual elements within the section
-    const itemVariants = {
-        hidden: { opacity: 0, y: 50 },
+    // Animation variants for the text
+    const textVariants = {
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
+            transition: { duration: 0.6, delay: 0.2, ease: 'easeOut' }
+        },
+        hover: {
+            y: -5, // Slight lift on hover
+            color: '#ffffff', // Brighten text (adjust based on your theme)
+            transition: { duration: 0.3, ease: 'easeOut' },
+        },
+    };
+    // Animation variants for header
+    const headerVariants = {
+        initial: { scale: 1 },
+        hover: {
+            scale: 1.1,
+            fontWeight: 700,
             transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
+                duration: 0.3,
+                ease: 'easeOut',
             },
         },
     };
-
     return (
-        <motion.section
-            id="about"
-            className="py-16 px-4 bg-white/90 backdrop-blur-sm shadow-inner relative z-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-        >
-            <div className="max-w-6xl mx-auto text-center">
-                <motion.h2 className="text-4xl font-bold text-gray-800" variants={itemVariants}>
-                    About Me
-                </motion.h2>
-                <motion.p className="text-gray-600 mt-4 max-w-3xl mx-auto text-lg leading-relaxed" variants={itemVariants}>
-                    I'm a Computer Science student specializing in AI & ML at KIET Group of Institutions. Proficient in Java, Spring Boot, ReactJS, and MySQL, I enjoy building user-friendly applications and tackling coding challenges on LeetCode, CodeChef, and HackerRank. My goal is to create impactful software solutions and secure a role as a Java Developer.
-                </motion.p>
+        <div className="border-b border-neutral-900 pb-2 lg:mb-32">
+            <motion.h2
+                className="mb-5 text-center text-4xl lg:text-4xl"
+                variants={headerVariants}
+                initial="initial"
+                whileHover="hover"
+            >
+                About <span className="tracking-tighter text-neutral-500">Me</span>
+            </motion.h2>
+            <div className="flex flex-wrap lg:mt-10">
+                <motion.div
+                    className="w-full lg:w-1/2 lg:p-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.3 }} // Removed once: true
+                    whileHover="hover"
+                    variants={imageVariants}
+                    style={{ pointerEvents: 'auto' }} // Ensure hover events work
+                >
+                    <div className="flex items-center justify-center">
+                        <motion.img
+                            src={aboutImage}
+                            alt="About Image"
+                            className="rounded-2xl 
+             shadow-[0_0_30px_rgba(147,51,234,0.4)] 
+             hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]
+             transition-shadow duration-500 h-90 w-100 lg:h-110 lg:w-120"
+                            whileHover={{
+                                border: '4px solid rgba(255, 255, 255, 0.2)', // Subtle border glow
+                                transition: { duration: 0.3 }
+                            }}
+                        />
+                    </div>
+                </motion.div>
+                <motion.div
+                    className="w-full lg:w-1/2 lg:p-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.3 }} // Removed once: true
+                    whileHover="hover"
+                    variants={textVariants}
+                    style={{ pointerEvents: 'auto' }} // Ensure hover events work
+                >
+                    <div className="flex items-center justify-center lg:justify-start">
+                        <p className="my-2 max-w-xl">{ABOUT_TEXT.split('\n').map((line, index) => (
+                            <span key={index}>
+                                {line}
+                                <br /><br />
+                            </span>
+                        ))}</p>
+                    </div>
+                </motion.div>
             </div>
-        </motion.section>
+        </div>
     );
 };
 
