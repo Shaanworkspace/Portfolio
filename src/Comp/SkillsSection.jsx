@@ -67,12 +67,14 @@ const SkillsSection = () => {
     return (
         <div className="border-b border-neutral-900 pb-2 lg:mb-32">
            <motion.h2
-        className="mb-15 text-center text-4xl lg:text-4xl"
+        className=" relative group mb-20 text-center text-4xl lg:text-4xl"
         variants={headerVariants}
         initial="initial"
         whileHover="hover"
       >
         Techno<span className="tracking-tighter text-neutral-500">logies</span>
+        {/* Animated gradient underline */}
+                <span className="absolute left-1/2 -bottom-2 h-[4px] w-20 hover:w-sm lg:hover:w-3xl group-hover:w-sm lg:group-hover:w-2xl transition-all duration-800 ease-in-out -translate-x-1/2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-[length:200%_100%] bg-left-bottom animate-gradient-slide rounded-full" />
       </motion.h2>
             <div className="flex flex-wrap items-center justify-center gap-4">
                 {skills.map(({ Icon, color }, index) => (

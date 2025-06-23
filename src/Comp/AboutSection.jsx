@@ -47,14 +47,16 @@ const AboutSection = () => {
         },
     };
     return (
-        <div className="border-b border-neutral-900 pb-2 lg:mb-32">
+        <div className="border-b border-neutral-900 pb-2 mt-16 mb-6 lg:mt-0 lg:mb-32">
             <motion.h2
-                className="mb-5 text-center text-4xl lg:text-4xl"
+                className="mb-5 text-center text-4xl lg:text-4xl relative group "
                 variants={headerVariants}
                 initial="initial"
                 whileHover="hover"
             >
-                About <span className="tracking-tighter text-neutral-500">Me</span>
+                About <span className="text-neutral-500">Me</span>
+                {/* Animated gradient underline */}
+                <span className="absolute left-1/2 -bottom-2 h-[4px] w-20 hover:w-sm lg:hover:w-3xl group-hover:w-sm lg:group-hover:w-2xl transition-all duration-800 ease-in-out -translate-x-1/2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-[length:200%_100%] bg-left-bottom animate-gradient-slide rounded-full" />
             </motion.h2>
             <div className="flex flex-wrap lg:mt-10">
                 <motion.div
@@ -70,7 +72,7 @@ const AboutSection = () => {
                         <motion.img
                             src={aboutImage}
                             alt="About Image"
-                            className="rounded-2xl 
+                            className="mb-10 mt-6 lg:mb-6 rounded-2xl 
              shadow-[0_0_30px_rgba(147,51,234,0.4)] 
              hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]
              transition-shadow duration-500 h-90 w-100 lg:h-110 lg:w-120"
