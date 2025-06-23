@@ -47,9 +47,9 @@ const AboutSection = () => {
         },
     };
     return (
-        <div className="border-b border-neutral-900 pb-2 mt-16 mb-6 lg:mt-0 lg:mb-32">
+        <div className=" group border-b border-neutral-900 pb-2 mt-16 mb-6 lg:mt-0 lg:mb-32">
             <motion.h2
-                className="mb-5 text-center text-4xl lg:text-4xl relative group "
+                className="mb-5 text-center text-4xl lg:text-4xl relative "
                 variants={headerVariants}
                 initial="initial"
                 whileHover="hover"
