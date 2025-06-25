@@ -19,19 +19,17 @@ const Experience = () => {
                         <div className="flex flex-wrap lg:flex-nowrap lg:justify-center gap-6">
                             {/* Photo Section (Left Side) - Hidden on small screens */}
                             <div className="flex justify-center items-center w-full lg:w-1/3 max-w-xs">
-                                <div className="relative overflow-hidden rounded-2xl shadow-lg transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-purple-500/20">
+                                {/* Add 'group' here */}
+                                <div className="group relative overflow-hidden rounded-2xl shadow-lg transform transition-all duration-500 hover:translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20">
                                     <img
                                         src={project.photo}
                                         alt={`${project.title} screenshot`}
-                                        className="rounded-2xl 
-                shadow-[0_0_30px_rgba(147,51,234,0.4)] 
-                hover:shadow-[0_0_40px_rgba(236,72,153,0.5)]
-                transition-shadow duration-500 w-full h-64 object-cover group-hover:scale-105"
+                                        // Add scale-100, and scale up on group hover
+                                        className="rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.4)] transition-transform duration-500 w-full h-64 object-cover scale-100 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </div>
-
                             {/* Main Content */}
                             <div className="relative w-full lg:w-2/3 max-w-2xl bg-neutral-900 p-6 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:border-purple-700">
                                 <h3 className="text-xl font-bold text-white mb-2">
@@ -56,6 +54,30 @@ const Experience = () => {
 
                                 {/* Frontend and Backend Buttons */}
                                 <div className="flex gap-4">
+                                    {project.liveDemo && (
+                                        <a
+                                            href={project.liveDemo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg shadow-md transition-all duration-300 hover:bg-green-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        >
+                                            <svg
+                                                className="w-4 h-4 mr-2"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="2"
+                                                    d="M14 5l7 7-7 7M5 5h14"
+                                                />
+                                            </svg>
+                                            Live Deployed (Backend + Frontend )
+                                        </a>
+                                    )}
                                     {project.frontendLink && (
                                         <a
                                             href={project.frontendLink}
