@@ -53,32 +53,35 @@ const Experience = () => {
                                 </div>
 
                                 {/* Frontend and Backend Buttons */}
-                                <div className="flex gap-4">
-                                    {project.liveDemo && (
-                                        <a
-                                            href={project.liveDemo}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg shadow-md transition-all duration-300 hover:bg-green-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                                        >
-                                            <svg
-                                                className="w-4 h-4 mr-2"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
+                                <div className="flex gap-4 flex-col md:flex-row">
+                                    <div>
+                                        {project.liveDemo && (
+                                            <a
+                                                href={project.liveDemo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg shadow-md transition-all duration-300 hover:bg-green-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                             >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M14 5l7 7-7 7M5 5h14"
-                                                />
-                                            </svg>
-                                            Live Deployed (Backend + Frontend )
-                                        </a>
-                                    )}
-                                    {project.frontendLink && (
+                                                <svg
+                                                    className="w-4 h-4 mr-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M14 5l7 7-7 7M5 5h14"
+                                                    />
+                                                </svg>
+                                                Live Deployed (Backend + Frontend )
+                                            </a>
+                                        )}
+                                    </div>
+                                    <div className='flex flex-wrap gap-4'> 
+                                        {project.frontendLink && (
                                         <a
                                             href={project.frontendLink}
                                             target="_blank"
@@ -126,6 +129,7 @@ const Experience = () => {
                                             Backend Code
                                         </a>
                                     )}
+                                    </div>
                                 </div>
                             </div>
                         </div>

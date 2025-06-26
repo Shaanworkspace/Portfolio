@@ -114,8 +114,8 @@ export const PROJECTS = [
     },
     {
         title: "Stone-Paper-Scissors",
-        image: project1,
-        photo: project1,
+        image: project3,
+        photo: project3,
         description:
             "A classic Stone-Paper-Scissors game playable in the browser. Simple and interactive UI for quick matches against the computer.",
         technologies: [
@@ -127,8 +127,8 @@ export const PROJECTS = [
     },
     {
         title: "Tic-Tac-Toe",
-        image: project1,
-        photo: project1,
+        image: project2,
+        photo: project2,
         description:
             "A browser-based Tic-Tac-Toe game for two players. Features a clean UI and tracks wins and draws.",
         technologies: [
