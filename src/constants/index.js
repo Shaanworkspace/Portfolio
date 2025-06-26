@@ -30,7 +30,7 @@ export const PROJECTS = [
         image: project1,
         photo: project1,
         description:
-            "A full-stack healthcare platform for appointment scheduling, patient management, and admin dashboards, serving 200+ mock users with 98% uptime. Built with secure RESTful APIs and responsive design for seamless cross-device access.",
+            "Deployed, MediPlan is a secure full-stack healthcare management platform designed for appointment scheduling, patient tracking, and real-time admin dashboards. Engineered to support 200+ mock users with 98% uptime, it features robust RESTful APIs, JWT-authenticated Spring Security, and a fully responsive UI powered by ReactJS and ShadCN/UI. Built with production-grade tooling and optimized for deployment on Docker and cloud platforms like Render, Railway, and Vercel.",
         technologies: [
 
             "ReactJS",
