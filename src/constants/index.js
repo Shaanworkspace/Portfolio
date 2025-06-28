@@ -142,6 +142,6 @@ export const PROJECTS = [
 
 export const CONTACT = {
     address: "KIET Group of Institutions, Ghaziabad, Uttar Pradesh, India",
-    phoneNo: "+91-854209975",
+    phoneNo: "+91-8542029975",
     email: "shaanyworkspace@gmail.com",
 };
