@@ -2,6 +2,9 @@ import {html} from "framer-motion/client";
 import project1 from "../assets/projects/img.png";
 import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
+import amazonpage from "../assets/projects/amazon-page.png"
+import stonepaper from "../assets/projects/stonepaper.png"
+import tictac from "../assets/projects/tic-tac.png"
 
 export const HERO_CONTENT = `Love to Code in Java, \n Shaan, Computer Science student specializing in AI and Machine Learning,\nwith expertise in full-stack development using Java, Spring Boot, ReactJS, and MySQL. Skilled in building scalable web Application like MediPlan and Employee Management System with AI integrations.\nWith a strong foundation in data structures, algorithms, and competitive programming (LeetCode, CodeChef, HackerRank).`;
 
@@ -57,7 +60,8 @@ export const PROJECTS = [
         ],
         frontendLink: "https://github.com/Shaanworkspace/MediPlan-Frontend",
         backendLink: "https://github.com/Shaanworkspace/MediPlan-Backend",
-        liveDemo: "https://mediplan.vercel.app/"
+        liveDemo: "https://mediplan.vercel.app/",
+        vercelLink:""
     },
     {
         title: "Employee Management System",
@@ -75,7 +79,8 @@ export const PROJECTS = [
         ],
         frontendLink: "https://github.com/Shaanworkspace/Employee-Management-System-Frontend",
         backendLink: "https://github.com/Shaanworkspace/Employee-Management-System-Backend",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:""
     },
     {
         title: "Journal Entry App",
@@ -86,17 +91,19 @@ export const PROJECTS = [
         technologies: ["Flutter", "Dart", "Firebase", "UI/UX Design"],
         frontendLink: "https://github.com/Shaanworkspace/Journal-App-Frontend",
         backendLink: "https://github.com/Shaanworkspace/Journal-App-Backend",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:""
     }, {
         title: "Amazon Home Page Clone",
-        image: project3,
-        photo: project2,
+        image: amazonpage,
+        photo: amazonpage,
         description:
             "A pixel-perfect clone of Amazon’s homepage using vanilla HTML, CSS and JS. Features responsive product grid, interactive carousel, and hover effects.",
         technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
         frontendLink: "https://github.com/Shaanworkspace/Amazon-home-page",
         backendLink: "",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:"https://amazon-home-page-ruddy.vercel.app/"
     },
     {
         title: "world-Talks",
@@ -110,12 +117,13 @@ export const PROJECTS = [
         ],
         frontendLink: "https://github.com/Shaanworkspace/world-Talks",
         backendLink: "",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:""
     },
     {
         title: "Stone-Paper-Scissors",
-        image: project3,
-        photo: project3,
+        image: stonepaper,
+        photo: stonepaper,
         description:
             "A classic Stone-Paper-Scissors game playable in the browser. Simple and interactive UI for quick matches against the computer.",
         technologies: [
@@ -123,12 +131,13 @@ export const PROJECTS = [
         ],
         frontendLink: "https://github.com/Shaanworkspace/Stone-Paper-Scissors",
         backendLink: "",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:"https://stone-paper-scissors-delta.vercel.app/"
     },
     {
         title: "Tic-Tac-Toe",
-        image: project2,
-        photo: project2,
+        image: tictac,
+        photo: tictac,
         description:
             "A browser-based Tic-Tac-Toe game for two players. Features a clean UI and tracks wins and draws.",
         technologies: [
@@ -136,7 +145,8 @@ export const PROJECTS = [
         ],
         frontendLink: "https://github.com/Shaanworkspace/Tic-Tac-Toe",
         backendLink: "",
-        liveDemo: ""
+        liveDemo: "",
+        vercelLink:"https://tic-tac-toe-beta-navy-86.vercel.app/"
     }
 ];
 

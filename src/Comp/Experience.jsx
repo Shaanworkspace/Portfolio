@@ -80,55 +80,80 @@ const Experience = () => {
                                             </a>
                                         )}
                                     </div>
-                                    <div className='flex flex-wrap gap-4'> 
+                                    {project.vercelLink && (
+                                        <div>
+                                            <a
+                                                href={project.vercelLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-700 text-white text-sm sm:text-base font-semibold rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+                                            >
+                                                <svg
+                                                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M14 5l7 7-7 7M5 5h14"
+                                                    />
+                                                </svg>
+                                                Live on Vercel
+                                            </a>
+                                        </div>
+                                    )}
+                                    <div className='flex flex-wrap gap-4'>
                                         {project.frontendLink && (
-                                        <a
-                                            href={project.frontendLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg shadow-md transition-all duration-300 hover:bg-purple-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                        >
-                                            <svg
-                                                className="w-4 h-4 mr-2"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
+                                            <a
+                                                href={project.frontendLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg shadow-md transition-all duration-300 hover:bg-purple-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                                             >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                                                />
-                                            </svg>
-                                            Frontend Code
-                                        </a>
-                                    )}
-                                    {project.backendLink && (
-                                        <a
-                                            href={project.backendLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-md transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        >
-                                            <svg
-                                                className="w-4 h-4 mr-2"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
+                                                <svg
+                                                    className="w-4 h-4 mr-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                                    />
+                                                </svg>
+                                                Frontend Code
+                                            </a>
+                                        )}
+                                        {project.backendLink && (
+                                            <a
+                                                href={project.backendLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-md transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M5 12h14M12 5l7 7-7 7"
-                                                />
-                                            </svg>
-                                            Backend Code
-                                        </a>
-                                    )}
+                                                <svg
+                                                    className="w-4 h-4 mr-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M5 12h14M12 5l7 7-7 7"
+                                                    />
+                                                </svg>
+                                                Backend Code
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
