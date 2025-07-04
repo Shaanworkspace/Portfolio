@@ -6,7 +6,8 @@ import amazonpage from "../assets/projects/amazon-page.png";
 import stonepaper from "../assets/projects/stonepaper.png";
 import tictac from "../assets/projects/tic-tac.png";
 import sympai from "../assets/projects/Symptom-AI.png"
-export const HERO_CONTENT = `Love to Code in Java, \n Shaan, Computer Science student specializing in AI and Machine Learning,\nwith expertise in full-stack development using Java, Spring Boot, ReactJS, and MySQL. Skilled in building scalable web Application like MediPlan and Employee Management System with AI integrations.\nWith a strong foundation in data structures, algorithms, and competitive programming (LeetCode, CodeChef, HackerRank).`;
+
+export const HERO_CONTENT = `Love to Code in Java, \n A Computer Science student specializing in AI and Machine Learning,\nwith expertise in full-stack development using Java, Spring Boot, ReactJS, and MySQL. Skilled in building scalable web Application like MediPlan and Employee Management System with AI integrations.\nWith a strong foundation in data structures, algorithms, and competitive programming (LeetCode, CodeChef, HackerRank).`;
 
 export const ABOUT_TEXT = `A Dedicated Computer Science student at KIET Group of Institutions, I specialize in AI, ML, and full-stack development, with proficiency in Java, Spring Boot, ReactJS, MySQL, MongoDB ,AWS cloud .\n My passion for problem-solving has led me to develop robust applications like MediPlan, a healthcare platform, and excel in competitive programming on LeetCode (top 15% globally), CodeChef, and HackerRank.\n With hands-on experience in RESTful APIs, cloud integration (AWS), and responsive UI design with Tailwind CSS, I thrive in dynamic environments. \nI actively contribute to open-source projects and stay updated with emerging technologies like microservices and DevOps to deliver high-quality, scalable solutions.`;
 

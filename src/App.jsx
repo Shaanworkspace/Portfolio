@@ -1,5 +1,4 @@
 
-import './App.css'
 import Portfolio from './Comp/Portfolio';
 
 function App() {

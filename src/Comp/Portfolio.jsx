@@ -1,114 +1,131 @@
-import React from 'react';
-import Header from "./Header.jsx";
-import HeroSection from "./HeroSection.jsx";
-import AboutSection from "./AboutSection.jsx";
-import SkillsSection from "./SkillsSection.jsx";
-import ContactSection from "./ContactSection.jsx";
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 import { motion } from 'framer-motion';
-import Footer from "./Footer.jsx";
-import Experience from './Experience.jsx';
 
-// Section fade-in animation
+// Lazy load sections
+const HeroSection = lazy(() => import('./HeroSection.jsx'));
+const AboutSection = lazy(() => import('./AboutSection.jsx'));
+const SkillsSection = lazy(() => import('./SkillsSection.jsx'));
+const Experience = lazy(() => import('./Experience.jsx'));
+const ContactSection = lazy(() => import('./ContactSection.jsx'));
+
+// Animation variants
 const sectionVariants = {
     hidden: { opacity: 0, y: 56 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.18 }
+        transition: { type: 'spring', duration: 0.8, bounce: 0.2 }
     }
 };
 
 export default function Portfolio() {
     return (
         <div className="min-h-screen text-neutral-300 antialiased selection:bg-white/80 selection:rounded-2xl selection:text-black bg-neutral-950 relative overflow-x-hidden">
-            {/* Decorative Animated Background */}
+
+            {/* Background */}
             <div className="fixed inset-0 -z-10 pointer-events-none">
-                {/* Radial gradient dark base */}
-                <div className="absolute top-0 left-0 w-full h-full bg-neutral-950 bg-[radial-gradient(ellipse_85%_65%_at_50%_-8%,rgba(167,139,250,0.23),rgba(255,255,255,0))]" />
-                {/* Animated color blobs */}
+                <div className="absolute top-0 left-0 w-full h-full bg-neutral-950 bg-[radial-gradient(ellipse_85%_65%_at_50%_-8%,rgba(167,139,250,0.2),rgba(255,255,255,0))]" />
                 <motion.div
-                    className="absolute left-[8vw] top-[10vh] w-[330px] h-[330px] bg-gradient-to-br from-purple-600/40 via-fuchsia-400/30 to-blue-400/20 rounded-full blur-3xl"
-                    animate={{ y: [0, 40, 0], x: [0, 24, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+                    className="absolute left-[8vw] top-[10vh] w-[240px] h-[240px] bg-gradient-to-br from-purple-600/30 via-fuchsia-400/20 to-blue-400/10 rounded-full blur-2xl will-change-transform"
+                    animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
                 />
                 <motion.div
-                    className="absolute right-[10vw] top-[64vh] w-[260px] h-[220px] bg-gradient-to-tr from-fuchsia-400/30 via-pink-400/20 to-blue-300/20 rounded-full blur-3xl"
-                    animate={{ y: [0, -26, 0], x: [0, -18, 0] }}
-                    transition={{ duration: 10, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 2.2 }}
+                    className="absolute right-[10vw] top-[60vh] w-[200px] h-[200px] bg-gradient-to-tr from-fuchsia-400/20 via-pink-400/10 to-blue-300/10 rounded-full blur-2xl will-change-transform"
+                    animate={{ y: [0, -20, 0], x: [0, -15, 0] }}
+                    transition={{ duration: 7, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 2 }}
                 />
-                {/* Subtle center glow */}
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[1200px] h-[400px] bg-gradient-to-tr from-fuchsia-900/10 via-purple-600/10 to-cyan-300/10 rounded-full blur-[110px]" />
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-gradient-to-tr from-fuchsia-900/10 via-purple-600/10 to-cyan-300/10 rounded-full blur-[100px]" />
             </div>
 
             {/* Main container */}
-            <div className="container mx-auto px-3 sm:px-6 md:px-10 xl:px-20">
-                {/* Header */}
+            <div className="container mx-auto px-3 sm:px-6 md:px-10 xl:px-20 pt-24">
+
                 <Header />
 
                 {/* Hero Section */}
-                <motion.div
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.8 }}
-                >
-                    <HeroSection />
-                </motion.div>
+                <Suspense fallback={<FallbackSection name="Hero Section" />}>
+                    <motion.div
+                        variants={sectionVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}  // Lower threshold so it appears immediately
+                    >
+                        <HeroSection />
+                    </motion.div>
+                </Suspense>
 
                 {/* About Section */}
-                <motion.div
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.6 }}
-                >
-                    <AboutSection />
-                </motion.div>
+                <Suspense fallback={<FallbackSection name="About Section" />}>
+                    <motion.div
+                        variants={sectionVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        <AboutSection />
+                    </motion.div>
+                </Suspense>
 
                 {/* Skills Section */}
-                <motion.div
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                >
-                    <SkillsSection />
-                </motion.div>
+                <Suspense fallback={<FallbackSection name="Skills Section" />}>
+                    <motion.div
+                        variants={sectionVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        <SkillsSection />
+                    </motion.div>
+                </Suspense>
 
-                {/* Experience (Projects) Section */}
-  
-                    <Experience className="z-10"/>
-                
+                {/* Experience */}
+                <Suspense fallback={<FallbackSection name="Experience Section" />}>
+                    <Experience />
+                </Suspense>
 
-                {/* Contact Section */}
-                <motion.div
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.35 }}
-                >
-                    <ContactSection />
-                </motion.div>
+                {/* Contact */}
+                <Suspense fallback={<FallbackSection name="Contact Section" />}>
+                    <motion.div
+                        variants={sectionVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
+                        <ContactSection />
+                    </motion.div>
+                </Suspense>
 
-                {/* Footer */}
                 <Footer />
             </div>
 
-            {/* Scroll to top button (optional, but impressive) */}
+            {/* Scroll To Top */}
             <ScrollToTopButton />
         </div>
     );
 }
 
-// Floating scroll-to-top button
-function ScrollToTopButton() {
-    const [show, setShow] = React.useState(false);
+// Fallback component (visible even on dark backgrounds)
+function FallbackSection({ name }) {
+    return (
+        <div className="w-full min-h-[150px] flex items-center justify-center bg-neutral-900/50 text-neutral-200">
+            Loading {name}...
+        </div>
+    );
+}
 
-    React.useEffect(() => {
+// Scroll-to-top button
+function ScrollToTopButton() {
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
         const handleScroll = () => setShow(window.scrollY > 320);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
     return (
         <motion.button
             initial={{ opacity: 0, scale: 0.5 }}

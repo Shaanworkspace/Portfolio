@@ -4,7 +4,7 @@ import shaanPhoto from "../assets/shaanProfilePhoto.jpg"
 import { motion } from "motion/react"
 const HeroSection = () => {
     return (
-        <div className='border-b border-neutral-900 pb-2 lg:mb-32 -mt-12 lg:mt-0'>
+        <div className='border-b border-neutral-900 pb-2 lg:mb-32 mt-20 '>
             <div className='flex flex-wrap'>
                 <div className='w-full lg:w-1/2'>
                     <div className='flex flex-col items-center lg:items-start'>
