@@ -1,107 +1,237 @@
-import React from 'react';
-import { BiLogoAws, BiLogoPostgresql } from 'react-icons/bi';
-import { DiJava } from 'react-icons/di';
+import React from "react";
+import { motion } from "framer-motion";
+
+// Icons
 import {
-  SiJavascript, SiMongodb, SiMysql, SiTailwindcss, SiSpringboot,
-  SiReact, SiNextdotjs, SiVite, SiHtml5, SiCss3, SiOpenai, SiGithub, SiGit, SiVercel, SiNetlify, SiRender, SiRailway, SiRedux, SiTypescript
-} from 'react-icons/si';
-import { FaNode, FaPython, FaDocker, FaLinux } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+    BiLogoAws,
+    BiLogoPostgresql,
+    BiServer,
+    BiCodeBlock,
+    BiCloud,
+    BiBrain,
+} from "react-icons/bi";
+import { DiJava } from "react-icons/di";
+import {
+    SiJavascript,
+    SiMongodb,
+    SiMysql,
+    SiTailwindcss,
+    SiSpringboot,
+    SiReact,
+    SiNextdotjs,
+    SiHtml5,
+    SiCss3,
+    SiOpenai,
+    SiGithub,
+    SiGit,
+    SiVercel,
+    SiNetlify,
+    SiRender,
+    SiRailway,
+    SiRedux,
+    SiTypescript,
+    SiPostman,
+} from "react-icons/si";
+import { FaNode, FaPython, FaDocker, FaLinux } from "react-icons/fa";
+
+// --- Data ---
+const SKILL_CATEGORIES = [
+    {
+        id: "backend",
+        label: "01 // CORE_LOGIC",
+        title: "Backend & Architecture",
+        icon: BiServer,
+        skills: [
+            { Icon: DiJava, color: "#F89820", label: "Java" },
+            { Icon: SiSpringboot, color: "#6DB33F", label: "Spring Boot" },
+            { Icon: FaPython, color: "#3776AB", label: "Python" },
+            { Icon: SiMysql, color: "#4479A1", label: "MySQL" },
+            { Icon: BiLogoPostgresql, color: "#336791", label: "PostgreSQL" },
+            { Icon: SiMongodb, color: "#47A248", label: "MongoDB" },
+        ],
+        // Bento Span Class (Full width on tablet, Half on Desktop)
+        className: "md:col-span-2 lg:col-span-1",
+    },
+    {
+        id: "frontend",
+        label: "02 // UI_UX_DESIGN",
+        title: "Frontend Ecosystem",
+        icon: BiCodeBlock,
+        skills: [
+            { Icon: SiReact, color: "#61DAFB", label: "React.js" },
+            { Icon: SiTailwindcss, color: "#06B6D4", label: "Tailwind" },
+            { Icon: SiRedux, color: "#764ABC", label: "Redux" },
+            { Icon: SiJavascript, color: "#F7DF1E", label: "JavaScript" },
+            { Icon: SiHtml5, color: "#E34F26", label: "HTML5" },
+            { Icon: SiCss3, color: "#1572B6", label: "CSS3" },
+        ],
+        className: "md:col-span-2 lg:col-span-1",
+    },
+    {
+        id: "devops",
+        label: "03 // INFRASTRUCTURE",
+        title: "DevOps & Cloud",
+        icon: BiCloud,
+        skills: [
+            { Icon: FaDocker, color: "#2496ED", label: "Docker" },
+            { Icon: BiLogoAws, color: "#FF9900", label: "AWS" },
+            { Icon: FaLinux, color: "#FCC624", label: "Linux" },
+            { Icon: SiGit, color: "#F05032", label: "Git" },
+            { Icon: SiPostman, color: "#FF6C37", label: "Postman" },
+            { Icon: SiVercel, color: "#ffffff", label: "Vercel" },
+            { Icon: SiRender, color: "#46E3B7", label: "Render" },
+        ],
+        className: "md:col-span-1",
+    },
+    {
+        id: "ai",
+        label: "04 // INTELLIGENCE",
+        title: "AI & Integrations",
+        icon: BiBrain,
+        skills: [
+            { Icon: SiOpenai, color: "#10A37F", label: "OpenAI API" },
+            { Icon: SiGithub, color: "#ffffff", label: "GitHub Actions" },
+            {
+                Icon: () => (
+                    <svg
+                        className="w-5 h-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256"
+                        fill="none"
+                    >
+                        <path
+                            d="M208 128L128 208L48 128L128 48L208 128Z"
+                            stroke="currentColor"
+                            strokeWidth="16"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                ),
+                color: "#ffffff",
+                label: "ShadCN/UI",
+            },
+        ],
+        className: "md:col-span-1",
+    },
+];
+
+// --- Components ---
+
+const SkillPill = ({ Icon, color, label }) => (
+    <div className="group flex items-center gap-3 px-4 py-3 bg-black/40 border border-neutral-800 rounded-lg hover:border-neutral-600 hover:bg-neutral-800/40 transition-all duration-300">
+        <div className="p-1.5 rounded bg-neutral-900 border border-neutral-800 group-hover:border-neutral-600 transition-colors">
+            <Icon
+                className="text-lg text-neutral-400 group-hover:text-white transition-colors"
+                style={{ color: null }}
+            />
+            {/* Color Reveal on Hover */}
+            <div className="hidden">
+                {/* Logic placeholder if you want forced colors, but text-white is cleaner for this minimal look */}
+            </div>
+        </div>
+        <span className="text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">
+            {label}
+        </span>
+    </div>
+);
+
+const BentoCard = ({ category, index }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={`
+                relative p-6 md:p-8 rounded-3xl bg-neutral-900/20 border border-white/5 
+                backdrop-blur-sm overflow-hidden group hover:border-white/10 transition-colors
+                ${category.className}
+            `}
+        >
+            {/* Background Gradient Blob */}
+            <div className="absolute -right-20 -top-20 w-64 h-64 bg-purple-900/10 rounded-full blur-3xl group-hover:bg-purple-900/20 transition-colors duration-500" />
+
+            {/* Header */}
+            <div className="relative z-10 mb-8">
+                <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono text-purple-400 tracking-wider uppercase">
+                        {category.label}
+                    </span>
+                    <category.icon className="text-neutral-600 text-xl group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">
+                    {category.title}
+                </h3>
+            </div>
+
+            {/* Skills Grid */}
+            <div className="relative z-10 grid grid-cols-2 gap-3">
+                {category.skills.map((skill, idx) => (
+                    <SkillPill
+                        key={idx}
+                        Icon={skill.Icon}
+                        color={skill.color}
+                        label={skill.label}
+                    />
+                ))}
+            </div>
+
+            {/* Corner Accents for Tech Feel */}
+            <div className="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-neutral-800" />
+            <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-neutral-800" />
+            <div className="absolute bottom-4 left-4 w-1.5 h-1.5 rounded-full bg-neutral-800" />
+            <div className="absolute bottom-4 right-4 w-1.5 h-1.5 rounded-full bg-neutral-800" />
+        </motion.div>
+    );
+};
 
 const SkillsSection = () => {
-  const skills = [
-    { Icon: SiReact, color: 'text-cyan-400', label: 'React.js' },
-    { Icon: SiJavascript, color: 'text-yellow-400', label: 'JavaScript' },
-    { Icon: SiHtml5, color: 'text-orange-500', label: 'HTML5' },
-    { Icon: SiCss3, color: 'text-blue-500', label: 'CSS3' },
-    { Icon: SiTailwindcss, color: 'text-sky-400', label: 'TailwindCSS' },
-    { Icon: SiMongodb, color: 'text-green-500', label: 'MongoDB' },
-    { Icon: SiMysql, color: 'text-blue-600', label: 'MySQL' },
-    { Icon: BiLogoPostgresql, color: 'text-sky-700', label: 'PostgreSQL' },
-    { Icon: SiSpringboot, color: 'text-green-600', label: 'Spring Boot' },
-    { Icon: DiJava, color: 'text-orange-600', label: 'Java' },
-    { Icon: FaPython, color: 'text-blue-300', label: 'Python' },
-    { Icon: SiVercel, color: 'text-white', label: 'Vercel' },
-    { Icon: SiNetlify, color: 'text-teal-300', label: 'Netlify' },
-    { Icon: SiRender, color: 'text-blue-400', label: 'Render' },
-    { Icon: SiRailway, color: 'text-yellow-400', label: 'Railway' },
-    { Icon: SiOpenai, color: 'text-green-400', label: 'OpenAI API' },
-    { Icon: SiGithub, color: 'text-white', label: 'GitHub' },
-    { Icon: SiGit, color: 'text-orange-400', label: 'Git' },
-    { Icon: FaDocker, color: 'text-blue-400', label: 'Docker' },
-    { Icon: FaLinux, color: 'text-yellow-100', label: 'Linux' },
-    {
-      Icon: () => (
-        <svg
-          className="w-10 h-10 md:w-12 md:h-12"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="#a21caf"
-          viewBox="0 0 24 24"
-        >
-          <path d="M20.205 16.392c-2.469 3.289-7.741 2.179-11.122 2.338 0 0-.599.034-1.201.133 0 0 .228-.097.519-.198 2.374-.821 3.496-.986 4.939-1.727 2.71-1.388 5.408-4.413 5.957-7.555-1.032 3.022-4.17 5.623-7.027 6.679-1.955.722-5.492 1.424-5.493 1.424l-.143-.076c-2.405-1.17-2.475-6.38 1.894-8.059 1.916-.736 3.747-.332 5.818-.825 2.208-.525 4.766-2.18 5.805-4.344 1.165 3.458 2.565 8.866.054 12.21m.042-13.28a9.2 9.2 0 0 1-1.065 1.89 9.98 9.98 0 0 0-7.167-3.031C6.492 1.971 2 6.463 2 11.985a9.98 9.98 0 0 0 3.205 7.334l.22.194a.856.856 0 1 1 .001.001l.149.132A9.96 9.96 0 0 0 12.015 22c5.278 0 9.613-4.108 9.984-9.292.274-2.539-.476-5.763-1.752-9.596" />
-        </svg>
-      ),
-      color: '',
-      label: 'shadcn/ui'
-    },
-  ];
+    return (
+        <section className="py-24 px-4 md:px-8 relative border-b border-neutral-800 bg-neutral-950">
+            {/* Background Grid Pattern */}
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
 
-  const iconVariants = {
-    initial: { y: 0 },
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 1.4,
-        repeat: Infinity,
-        repeatType: 'reverse',
-        ease: 'easeInOut',
-      },
-    },
-    hover: {
-      scale: 1.15,
-      rotate: 6,
-      boxShadow: '0 4px 24px rgba(168,85,247,0.2)',
-      transition: { duration: 0.3, ease: 'easeOut' },
-    },
-  };
+            <div className="max-w-7xl mx-auto">
+                {/* Section Header */}
+                <motion.div
+                    className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="max-w-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Technical{" "}
+                            <span className="text-neutral-500">
+                                Proficiency
+                            </span>
+                        </h2>
+                        <p className="text-lg text-neutral-400 leading-relaxed">
+                            I architect scalable digital solutions using a
+                            robust, modern technology stack. From microservices
+                            to pixel-perfect UIs.
+                        </p>
+                    </div>
+                    {/* Decorative Line */}
+                    <div className="hidden md:block h-px flex-1 bg-neutral-800 ml-12 relative top-[-10px]">
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-purple-500 rounded-full"></div>
+                    </div>
+                </motion.div>
 
-  return (
-    <section className="border-b border-neutral-800 py-12 md:py-20">
-      <motion.h2
-        className="relative group mb-12 text-center text-3xl md:text-4xl font-bold"
-        initial={{ scale: 1 }}
-        whileHover={{
-          scale: 1.05,
-          transition: { duration: 0.3, ease: 'easeOut' },
-        }}
-      >
-        Techno
-        <span className="tracking-tight text-neutral-500">logies</span>
-        <span className="absolute left-1/2 -bottom-2 h-[3px] w-20 group-hover:w-48 transition-all duration-500 ease-in-out -translate-x-1/2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full" />
-      </motion.h2>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 max-w-5xl mx-auto">
-        {skills.map(({ Icon, color, label }, index) => (
-          <motion.div
-            key={label || index}
-            className="flex flex-col items-center p-4 rounded-xl border border-neutral-800 bg-gradient-to-b from-zinc-950 via-zinc-900 to-black hover:from-purple-900/70 hover:to-zinc-900/40 shadow-sm transition-all"
-            variants={iconVariants}
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-          >
-            <Icon
-              className={`text-4xl sm:text-5xl md:text-6xl ${color} transition-colors duration-300`}
-            />
-            <span className="mt-3 text-xs sm:text-sm md:text-base font-medium text-neutral-300 group-hover:text-fuchsia-400 transition-colors duration-300 text-center">
-              {label}
-            </span>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
+                {/* Main Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {SKILL_CATEGORIES.map((category, index) => (
+                        <BentoCard
+                            key={index}
+                            category={category}
+                            index={index}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default SkillsSection;
-1

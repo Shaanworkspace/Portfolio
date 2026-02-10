@@ -1,178 +1,156 @@
-import { html } from "framer-motion/client";
 import project1 from "../assets/projects/img.png";
-import project2 from "../assets/projects/project-2.jpg";
-import project3 from "../assets/projects/project-3.jpg";
+import project2 from "../assets/projects/project-2.jpg"; // Employee MS
+import project3 from "../assets/projects/project-3.jpg"; // Journal
+import project5 from "../assets/projects/project-5.png"; // Journal
 import amazonpage from "../assets/projects/amazon-page.png";
 import stonepaper from "../assets/projects/stonepaper.png";
 import tictac from "../assets/projects/tic-tac.png";
-import sympai from "../assets/projects/Symptom-AI.png"
+import sympai from "../assets/projects/Symptom-AI.png";
 
-export const HERO_CONTENT = `Love to Code in Java, \n A Computer Science student specializing in AI and Machine Learning,\nwith expertise in full-stack development using Java, Spring Boot, ReactJS, and MySQL. Skilled in building scalable web Application like MediPlan and Employee Management System with AI integrations.\nWith a strong foundation in data structures, algorithms, and competitive programming (LeetCode, CodeChef, HackerRank).`;
+export const HERO_CONTENT = `Full Stack Developer & AI Enthusiast specializing in building scalable web applications. I bridge the gap between complex backend logic and intuitive frontend design using Java, Spring Boot, and React.`;
 
-export const ABOUT_TEXT = `A Dedicated Computer Science student at KIET Group of Institutions, I specialize in AI, ML, and full-stack development, with proficiency in Java, Spring Boot, ReactJS, MySQL, MongoDB ,AWS cloud .\n My passion for problem-solving has led me to develop robust applications like MediPlan, a healthcare platform, and excel in competitive programming on LeetCode (top 15% globally), CodeChef, and HackerRank.\n With hands-on experience in RESTful APIs, cloud integration (AWS), and responsive UI design with Tailwind CSS, I thrive in dynamic environments. \nI actively contribute to open-source projects and stay updated with emerging technologies like microservices and DevOps to deliver high-quality, scalable solutions.`;
+export const ABOUT_TEXT = `I am a Computer Science undergraduate at KIET Group of Institutions with a focus on Full Stack Development and Artificial Intelligence. 
+
+My technical journey is defined by a hands-on approach—whether it's architecting microservices for healthcare platforms like MediPlan or integrating OpenAI into user-centric applications. I rank in the top 15% globally on LeetCode, reflecting my commitment to algorithmic efficiency.
+
+I am currently seeking opportunities to leverage my skills in Java, Spring Boot, and Modern JavaScript frameworks to solve real-world problems.`;
 
 export const EXPERIENCES = [
-	{
-		year: "2023 - Present",
-		role: "Full Stack Developer (Guided College Project)",
-		company: "School Timetable Automation System",
-		description: `Collaborated on School Timetable Management System under the mentorship of college faculty Mr. Rahul Dixit. Focused on implementing rule-based scheduling logic and dynamic period allocation. Built RESTful APIs for secure teacher-class-subject mapping. Designed intuitive frontend to display real-time timetables and period-wise breakdowns.`,
-		technologies: [
-			"Java",
-			"Spring Boot",
-			"ReactJS",
-			"MySQL",
-			"Tailwind CSS",
-			"REST APIs",
-		],
-	},
+    {
+        year: "2024",
+        role: "AWS Certified Cloud Practitioner",
+        company: "Amazon Web Services (AWS)",
+        description:
+            "Validated technical expertise in cloud concepts, security, compliance, and the AWS shared responsibility model. Demonstrated ability to deploy applications using AWS services.",
+        technologies: [
+            "Cloud Computing",
+            "Security",
+            "AWS Lambda",
+            "EC2",
+            "S3",
+        ],
+        type: "certification", // New type for styling
+    },
+    {
+        year: "2024",
+        role: "AWS Certified AI Practitioner",
+        company: "Amazon Web Services (AWS)",
+        description:
+            "Earned credential validating understanding of AI/ML concepts on AWS. Covered generative AI, foundation models, and responsible AI practices.",
+        technologies: [
+            "Generative AI",
+            "SageMaker",
+            "Bedrock",
+            "Machine Learning",
+        ],
+        type: "certification",
+    },
+    {
+        year: "2024 - Present",
+        role: "Open Source Contributor",
+        company: "rtCamp",
+        description:
+            "Actively contributing to enterprise-level open source repositories. Merged 1 Pull Request involving frontend optimization and documentation improvements.",
+        technologies: ["SCSS", "Git", "Open Source"],
+        type: "work",
+    },
+    {
+        year: "2023 - 2024",
+        role: "Full Stack Developer Intern",
+        company: "School Timetable Automation System",
+        description:
+            "Engineered a rule-based scheduling algorithm to automate class allocations. Built a RESTful backend using Spring Boot and designed a dynamic React dashboard for real-time timetable visualization.",
+        technologies: [
+            "Java",
+            "Spring Boot",
+            "ReactJS",
+            "MySQL",
+            "Algorithm Design",
+        ],
+        type: "work",
+    },
+    {
+        year: "2023 - 2027",
+        role: "B.Tech in Computer Science",
+        company: "KIET Group of Institutions",
+        description:
+            "Specialization in AI & ML. Active member of Google Developer Group (GDG).",
+        technologies: ["Data Structures", "OOPs", "System Design"],
+        type: "education",
+    },
 ];
 
+// PROJECTS (Ordered by "Latest")
 export const PROJECTS = [
-	{
-		title: "MediPlan",
-		image: project1,
-		photo: project1,
-		description:
-			"Deployed, MediPlan is a secure full-stack healthcare management platform designed for appointment scheduling, patient tracking, and real-time admin dashboards. Engineered to support 200+ mock users with 98% uptime, it features robust RESTful APIs, JWT-authenticated Spring Security, and a fully responsive UI powered by ReactJS and ShadCN/UI. Built with production-grade tooling and optimized for deployment on Docker and cloud platforms like Render, Railway, and Vercel.",
-		technologies: [
-			"ReactJS",
-			"Tailwind CSS",
-			"React Router DOM",
-			"ShadCN/UI",
-			"Framer Motion",
-			"Axios",
-			"LocalStorage / SessionStorage",
-			"React Hook Form",
-			"Java",
-			"Spring Boot / MVC / JPA ",
-			"Lombok",
-			"Spring Security + JWT",
-			"MySQL Workbench",
-			"MySQL",
-			"REST APIs",
-			"Swagger / Postman",
-			"CORS Configuration",
-			"Docker",
-			"DockerHub",
-			"Render / Railway / Vercel",
-		],
-		frontendLink: "https://github.com/Shaanworkspace/MediPlan-Frontend",
-		backendLink: "https://github.com/Shaanworkspace/MediPlan-Backend",
-		liveDemo: "https://mediplan.vercel.app/",
-		vercelLink: "",
-	},
-	{
-		title: "SympAI",
-		image: sympai,
-		photo: sympai,
-		description: `🩺 SympAI is an intelligent AI-powered web application that helps users:
-- Analyze their symptoms quickly
-- Reduce anxiety by providing probable causes
-- Recommend next steps (self-care or professional care)
-- Track symptom history
-
-It acts as a virtual health companion, combining clear guidance with an approachable experience.`,
-		technologies: [
-			"React.js",
-			"Tailwind CSS",
-			"Lucide React",
-			"shadcn/ui",
-			"Spring Boot",
-			"OpenAI API",
-			"MySQL/PostgreSQL",
-			"Clerk (optional)",
-		],
-		frontendLink: "https://github.com/Shaanworkspace/symp-ai",
-		backendLink: "https://github.com/Shaanworkspace/symp-ai-backend", // Update this if you have a separate backend repo
-		liveDemo: "",
-		vercelLink: "https://symp-ai.vercel.app/",
-	},
-	{
-		title: "Employee Management System",
-		image: project2,
-		photo: project2,
-		description:
-			"A robust HR management tool for employee data tracking and role-based access, handling 100+ records with 25% faster data retrieval. Features include secure authentication and dynamic data visualization.",
-		technologies: [
-			"Java",
-			"Spring Boot",
-			"ReactJS",
-			"MySQL",
-			"Tailwind CSS",
-			"Axios",
-		],
-		frontendLink:
-			"https://github.com/Shaanworkspace/Employee-Management-System-Frontend",
-		backendLink:
-			"https://github.com/Shaanworkspace/Employee-Management-System-Backend",
-		liveDemo: "",
-		vercelLink: "",
-	},
-	{
-		title: "Journal Entry App",
-		image: project3,
-		photo: project3,
-		description:
-			"A cross-platform mobile app for journal management, supporting 500+ mock users with real-time Firebase sync. Optimized for iOS and Android, improving user engagement by 20% through intuitive UI/UX.",
-		technologies: ["Flutter", "Dart", "Firebase", "UI/UX Design"],
-		frontendLink: "https://github.com/Shaanworkspace/Journal-App-Frontend",
-		backendLink: "https://github.com/Shaanworkspace/Journal-App-Backend",
-		liveDemo: "",
-		vercelLink: "",
-	},
-	{
-		title: "Amazon Home Page Clone",
-		image: amazonpage,
-		photo: amazonpage,
-		description:
-			"A pixel-perfect clone of Amazon’s homepage using vanilla HTML, CSS and JS. Features responsive product grid, interactive carousel, and hover effects.",
-		technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-		frontendLink: "https://github.com/Shaanworkspace/Amazon-home-page",
-		backendLink: "",
-		liveDemo: "",
-		vercelLink: "https://amazon-home-page-ruddy.vercel.app/",
-	},
-	{
-		title: "world-Talks",
-		image: project3,
-		photo: project3,
-		description:
-			"A real-time chat or discussion platform (details to be added). Designed for group and individual conversations, potentially including user authentication and message history.",
-		technologies: ["ReactJS", "Java Scripts", "React Public API"],
-		frontendLink: "https://github.com/Shaanworkspace/world-Talks",
-		backendLink: "",
-		liveDemo: "",
-		vercelLink: "",
-	},
-	{
-		title: "Stone-Paper-Scissors",
-		image: stonepaper,
-		photo: stonepaper,
-		description:
-			"A classic Stone-Paper-Scissors game playable in the browser. Simple and interactive UI for quick matches against the computer.",
-		technologies: ["JavaScript", "HTML", "CSS"],
-		frontendLink: "https://github.com/Shaanworkspace/Stone-Paper-Scissors",
-		backendLink: "",
-		liveDemo: "",
-		vercelLink: "https://stone-paper-scissors-delta.vercel.app/",
-	},
-	{
-		title: "Tic-Tac-Toe",
-		image: tictac,
-		photo: tictac,
-		description:
-			"A browser-based Tic-Tac-Toe game for two players. Features a clean UI and tracks wins and draws.",
-		technologies: ["JavaScript", "HTML", "CSS"],
-		frontendLink: "https://github.com/Shaanworkspace/Tic-Tac-Toe",
-		backendLink: "",
-		liveDemo: "",
-		vercelLink: "https://tic-tac-toe-beta-navy-86.vercel.app/",
-	},
+    {
+        title: "AyurSutra - Microservices Healthcare",
+        image: project5, // Replace with actual image if available
+        photo: project5, // Replace with actual image if available
+        isLatest: true,
+        liveDemo: "https://www.ayursutra.me",
+        description:
+            "A distributed healthcare platform built on a Microservices architecture. Features include role-based access (Doctor, Patient, Therapist), asynchronous booking via RabbitMQ, and secure OAuth2 authentication.",
+        technologies: [
+            "Java 21",
+            "Spring Boot",
+            "Microservices",
+            "RabbitMQ",
+            "Docker",
+            "Redis",
+            "AWS Lambda",
+        ],
+        liveDemo: "https://ayursutra.me",
+        frontendLink: "https://github.com/Shaanworkspace/Ayursutra-frontend",
+        backendLink: "https://github.com/Shaanworkspace/Ayursutra-userMS",
+        isLatest: true, // Tag for styling
+    },
+    {
+        title: "MediPlan - Hospital Management",
+        image: project1,
+        photo: project1,
+        description:
+            "A secure full-stack platform for appointment scheduling and patient tracking. Engineered to support 200+ concurrent users with JWT security and a responsive ShadCN/UI frontend.",
+        technologies: ["ReactJS", "Spring Boot", "MySQL", "Docker", "Render"],
+        frontendLink: "https://github.com/Shaanworkspace/MediPlan-Frontend",
+        backendLink: "https://github.com/Shaanworkspace/MediPlan-Backend",
+        liveDemo: "https://mediplan.vercel.app/",
+    },
+    {
+        title: "SympAI - AI Symptom Analyzer",
+        image: sympai,
+        photo: sympai,
+        description:
+            "An AI-powered diagnostic tool integrating the OpenAI API to analyze user symptoms and recommend medical next steps. Reduces health anxiety by providing data-backed preliminary guidance.",
+        technologies: ["React.js", "OpenAI API", "Tailwind CSS", "Spring Boot"],
+        frontendLink: "https://github.com/Shaanworkspace/symp-ai",
+        vercelLink: "https://symp-ai.vercel.app/",
+    },
+    {
+        title: "Employee Management System",
+        image: project2,
+        photo: project2,
+        description:
+            "Full-stack HR tool for employee record tracking. Optimized database queries reduced retrieval time by 25%. Features role-based access control.",
+        technologies: ["Java", "Spring Boot", "ReactJS", "MySQL", "Axios"],
+        frontendLink:
+            "https://github.com/Shaanworkspace/Employee-Management-System-Frontend",
+        backendLink:
+            "https://github.com/Shaanworkspace/Employee-Management-System-Backend",
+    },
+    {
+        title: "Amazon Clone",
+        image: amazonpage,
+        photo: amazonpage,
+        description:
+            "Pixel-perfect frontend recreation of the Amazon homepage, focusing on CSS Grid/Flexbox mastery and responsive design principles.",
+        technologies: ["HTML5", "CSS3", "JavaScript"],
+        frontendLink: "https://github.com/Shaanworkspace/Amazon-home-page",
+        vercelLink: "https://amazon-home-page-ruddy.vercel.app/",
+    },
 ];
 
 export const CONTACT = {
-	address: "KIET Group of Institutions, Ghaziabad, Uttar Pradesh, India",
-	phoneNo: "+91-8542029975",
-	email: "shaanyworkspace@gmail.com",
+    address: "Ghaziabad, Uttar Pradesh, India",
+    phoneNo: "+91-8542029975",
+    email: "shaanyworkspace@gmail.com",
 };

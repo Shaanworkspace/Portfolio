@@ -1,118 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import { FaInstagram, FaGithub, FaLinkedinIn, FaMedium } from "react-icons/fa";
-import { FaXTwitter } from 'react-icons/fa6';
-
-const socialLinks = [
-    {
-        icon: <FaInstagram className="text-neutral-300 text-xl md:text-2xl group-hover:text-pink-400 transition-colors duration-300" />,
-        href: 'https://www.instagram.com/shaan.yadv',
-        label: 'Instagram',
-        brand: 'pink'
-    },
-    {
-        icon: <FaLinkedinIn className="text-neutral-300 text-xl md:text-2xl group-hover:text-blue-400 transition-colors duration-300" />,
-        href: 'https://www.linkedin.com/in/shaanyadv/',
-        label: 'LinkedIn',
-        brand: 'blue'
-    },
-    {
-        icon: <FaGithub className="text-neutral-300 text-xl md:text-2xl group-hover:text-white transition-colors duration-300" />,
-        href: 'https://github.com/Shaanworkspace',
-        label: 'GitHub',
-        brand: 'github'
-    },
-    {
-        icon: <FaXTwitter className="text-neutral-300 text-xl md:text-2xl group-hover:text-sky-400 transition-colors duration-300" />,
-        href: 'https://x.com/ShaanYadav54660',
-        label: 'Twitter',
-        brand: 'sky'
-    },
-    {
-        icon: <FaMedium className="text-neutral-300 text-xl md:text-2xl group-hover:text-green-400 transition-colors duration-300" />,
-        href: 'https://medium.com/@shaanyworkspace',
-        label: 'Medium',
-        brand: 'green'
-    }
-];
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    FaInstagram,
+    FaGithub,
+    FaLinkedinIn,
+    FaMedium,
+    FaBars,
+    FaTimes,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    // Handle Scroll Effect
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 10);
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
+    const navLinks = [
+        { name: "About", href: "#about" },
+        { name: "Work", href: "#experience" },
+        { name: "Projects", href: "#projects" },
+        { name: "Contact", href: "#contact" },
+    ];
+
+    const socialLinks = [
+        { icon: <FaGithub />, href: "https://github.com/Shaanworkspace" },
+        {
+            icon: <FaLinkedinIn />,
+            href: "https://www.linkedin.com/in/shaanyadv/",
+        },
+        { icon: <FaXTwitter />, href: "https://x.com/ShaanYadav54660" },
+    ];
 
     return (
         <nav
             className={`
-                fixed top-0 left-0 w-full z-50
-                flex flex-col sm:flex-row items-center justify-between
-                py-3 sm:py-5 px-2 sm:px-4 md:px-10
-                gap-2 sm:gap-0
-                border-b border-zinc-800/60 shadow-lg
-                transition-all duration-300
-                
-                ${scrolled
-                    ? 'bg-black/70 backdrop-blur-lg shadow-2xl'
-                    : 'bg-black/40 backdrop-blur-md'}
+                fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b
+                ${
+                    scrolled
+                        ? "bg-neutral-950/80 backdrop-blur-md border-neutral-800 py-3"
+                        : "bg-transparent border-transparent py-5"
+                }
             `}
-            style={{ WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'blur(8px)' }}
         >
-            {/* Logo/Brand */}
-            <a
-                href="#home"
-                className="relative group font-extrabold text-2xl sm:text-3xl md:text-4xl text-white tracking-tight transition-all duration-300
-                    hover:text-transparent hover:bg-gradient-to-r hover:from-purple-400 hover:via-fuchsia-400 hover:to-cyan-400 hover:bg-clip-text
-                    hover:drop-shadow-lg"
-                aria-label="Shaan Yadav Portfolio Home"
-            >
-                <span className="inline-block align-middle">Shaan</span>
-                {/* Animated gradient ring */}
-                <span
-                    aria-hidden
-                    className="absolute -inset-2 -z-10 rounded-full blur-[12px] opacity-0 group-hover:opacity-80 group-hover:animate-spin-slow
-                        bg-gradient-to-tr from-purple-500 via-fuchsia-500 to-cyan-400 transition-all duration-700"
-                />
-            </a>
+            <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+                {/* 1. LOGO */}
+                <a href="#" className="relative z-50 group">
+                    <span className="text-2xl font-bold tracking-tighter text-white">
+                        Shaan<span className="text-purple-500">.</span>dev
+                    </span>
+                </a>
 
-            {/* Social Icons */}
-            <div className="flex flex-wrap justify-center flex-shrink-0 items-center gap-1 sm:gap-4">
-                {socialLinks.map((link) => (
+                {/* 2. DESKTOP NAVIGATION */}
+                <div className="hidden md:flex items-center gap-8">
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            className="text-sm font-medium text-neutral-400 hover:text-white transition-colors relative group"
+                        >
+                            {link.name}
+                            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-500 transition-all duration-300 group-hover:w-full" />
+                        </a>
+                    ))}
+                </div>
+
+                {/* 3. DESKTOP SOCIALS & CTA */}
+                <div className="hidden md:flex items-center gap-4">
+                    <div className="flex gap-3 pr-4 border-r border-neutral-800">
+                        {socialLinks.map((link, idx) => (
+                            <a
+                                key={idx}
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-neutral-400 hover:text-white hover:scale-110 transition-all"
+                            >
+                                {link.icon}
+                            </a>
+                        ))}
+                    </div>
                     <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit Shaan Yadav's ${link.label} profile`}
-                        className={`
-                            group p-2 rounded-full border border-neutral-700 bg-neutral-900/70
-                            transition-all duration-300
-                            hover:-translate-y-2 hover:scale-110 hover:shadow-lg
-                            ${link.brand === 'pink' ? 'hover:shadow-pink-400/20' : ''}
-                            ${link.brand === 'blue' ? 'hover:shadow-blue-400/20' : ''}
-                            ${link.brand === 'sky' ? 'hover:shadow-sky-400/20' : ''}
-                            ${link.brand === 'green' ? 'hover:shadow-green-400/20' : ''}
-                            ${link.brand === 'github' ? 'hover:shadow-neutral-200/20' : ''}
-                            hover:border-transparent
-                            text-base sm:text-xl
-                        `}
+                        href="#contact"
+                        className="px-4 py-2 text-sm font-semibold bg-white text-black rounded-full hover:bg-neutral-200 transition-colors"
                     >
-                        {link.icon}
+                        Let's Talk
                     </a>
-                ))}
+                </div>
+
+                {/* 4. MOBILE HAMBURGER */}
+                <button
+                    className="md:hidden relative z-50 text-white p-2"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                    {mobileMenuOpen ? (
+                        <FaTimes size={24} />
+                    ) : (
+                        <FaBars size={24} />
+                    )}
+                </button>
+
+                {/* 5. MOBILE MENU OVERLAY */}
+                <AnimatePresence>
+                    {mobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="absolute top-0 left-0 w-full bg-neutral-950 border-b border-neutral-800 p-6 pt-24 shadow-2xl md:hidden flex flex-col gap-6"
+                        >
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-xl font-bold text-neutral-300 hover:text-white"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                            <div className="flex gap-6 mt-4 pt-6 border-t border-neutral-800">
+                                {socialLinks.map((link, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={link.href}
+                                        className="text-2xl text-neutral-400 hover:text-white"
+                                    >
+                                        {link.icon}
+                                    </a>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-            {/* Custom animation */}
-            <style>{`
-                .animate-spin-slow {
-                    animation: spin 2.4s linear infinite;
-                }
-                @keyframes spin {
-                    0% { transform: rotate(0deg);}
-                    100% {transform: rotate(360deg);}
-                }
-            `}</style>
         </nav>
     );
 };

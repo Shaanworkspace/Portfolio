@@ -1,147 +1,133 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaMedium } from 'react-icons/fa';
-import { CONTACT } from '../constants';
-import { motion } from 'framer-motion';
-
-const itemVariants = {
-  initial: { y: 0 },
-  hover: {
-    y: -5,
-    color: '#A21CAF', // fuchsia-700 for a premium look
-    transition: { duration: 0.3, ease: 'easeOut' },
-  },
-  animate: {
-    y: [0, -3, 0],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      repeatType: 'loop',
-      ease: 'easeInOut',
-    },
-  },
-};
-
-const socialVariants = {
-  initial: { y: 0, scale: 1 },
-  hover: {
-    y: -10,
-    scale: 1.16,
-    boxShadow: '0 0 18px 0 rgba(168,85,247,0.18)',
-    borderColor: '#A21CAF',
-    transition: { duration: 0.28, ease: 'easeOut' },
-  },
-  animate: {
-    y: [0, -4, 0],
-    transition: {
-      duration: 2.5,
-      repeat: Infinity,
-      repeatType: 'loop',
-      ease: 'easeInOut',
-    },
-  },
-};
+import React from "react";
+import { FaGithub, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { CONTACT } from "../constants";
 
 const Footer = () => {
-  return (
-    <footer className="bg-gradient-to-tr from-black via-zinc-950 to-black pt-16 pb-10 px-4 text-neutral-300 shadow-inner border-t border-neutral-800/60">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-0 justify-between">
-        {/* Contact Info */}
-        <div className="flex-1 mb-8 md:mb-0 space-y-5">
-          <h3 className="text-2xl font-extrabold text-white mb-6 tracking-tight">Contact <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">Me</span></h3>
-          {[
-            { Icon: FaMapMarkerAlt, href: `https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`, text: CONTACT.address },
-            { Icon: FaPhoneAlt, href: `tel:${CONTACT.phoneNo}`, text: CONTACT.phoneNo },
-            { Icon: FaEnvelope, href: `mailto:${CONTACT.email}`, text: CONTACT.email },
-          ].map(({ Icon, href, text }, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center gap-3 text-neutral-400 hover:text-fuchsia-400 transition-colors"
-              variants={itemVariants}
-              initial="initial"
-              whileHover="hover"
-              animate="animate"
-              transition={{ delay: index * 0.08 }}
-            >
-              <Icon className="text-fuchsia-400 text-xl" />
-              <a href={href} target="_blank" rel="noopener noreferrer" className="text-base font-medium">
-                {text}
-              </a>
-            </motion.div>
-          ))}
-        </div>
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
-        {/* Quick Links */}
-        <div className="flex-1 flex flex-col items-center md:items-start mb-8 md:mb-0">
-          <h3 className="text-2xl font-extrabold text-white mb-6 tracking-tight">Quick <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">Links</span></h3>
-          <ul className="space-y-3">
-            {[
-              { name: 'Home', href: '#home' },
-              { name: 'About', href: '#about' },
-              { name: 'Projects', href: '#projects' },
-              { name: 'Experience', href: '#experience' },
-            ].map((link, index) => (
-              <motion.li
-                key={index}
-                variants={itemVariants}
-                initial="initial"
-                whileHover="hover"
-                animate="animate"
-                transition={{ delay: index * 0.08 }}
-              >
-                <a href={link.href} className="text-base flex items-center font-medium hover:text-fuchsia-400 transition-colors">
-                  <span className="mr-2 text-fuchsia-400">→</span>
-                  {link.name}
-                </a>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
+    const currentYear = new Date().getFullYear();
 
-        {/* Social Media */}
-        <div className="flex-1 flex flex-col items-center md:items-end">
-          <h3 className="text-2xl font-extrabold text-white mb-6 tracking-tight">Connect</h3>
-          <div className="flex gap-5 mb-6">
-            {[
-              { Icon: FaGithub, href: 'https://github.com/Shaanworkspace', color: 'text-white' },
-              { Icon: FaLinkedin, href: 'https://www.linkedin.com/in/shaanyadv/', color: 'text-blue-400' },
-              { Icon: FaMedium, href: 'https://medium.com/@shaanyworkspace', color: 'text-green-400' },
-            ].map(({ Icon, href, color }, index) => (
-              <motion.a
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-3 rounded-full border-2 border-neutral-700 bg-neutral-900/70 transition-all ${color} hover:bg-zinc-900 hover:border-fuchsia-400`}
-                variants={socialVariants}
-                initial="initial"
-                whileHover="hover"
-                animate="animate"
-                transition={{ delay: index * 0.1 }}
-                aria-label={`Visit Shaan Yadav's social profile`}
-              >
-                <Icon className="text-2xl" />
-              </motion.a>
-            ))}
-          </div>
-          {/* Subtle call-to-action */}
-          <p className="text-sm text-neutral-400 mt-2">Let’s connect & build something <span className="text-fuchsia-400">amazing</span>!</p>
-        </div>
-      </div>
+    return (
+        <footer className="relative bg-neutral-950 pt-20 pb-10 border-t border-neutral-800 overflow-hidden">
+            {/* Background Decorative Gradient */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
 
-      {/* Divider */}
-      <div className="max-w-6xl mx-auto my-8">
-        <hr className="border-neutral-800" />
-      </div>
-      {/* Copyright */}
-      <div className="max-w-6xl mx-auto text-center text-sm text-neutral-400">
-        <p>
-          © {new Date().getFullYear()} <span className="font-semibold text-fuchsia-400">Shaan Yadav</span>. All rights reserved.
-        </p>
-        <p className="mt-1">
-          Built with <span className="text-fuchsia-400 font-semibold">ReactJS & Tailwind CSS</span>
-        </p>
-      </div>
-    </footer>
-  );
+            <div className="max-w-7xl mx-auto px-4 md:px-8">
+                {/* TOP SECTION: CTA & BRANDING */}
+                <div className="grid md:grid-cols-2 gap-12 mb-16">
+                    <div className="space-y-6">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                            Shaan<span className="text-purple-500">.</span>dev
+                        </h2>
+                        <p className="text-neutral-400 max-w-sm text-lg">
+                            Crafting scalable digital experiences with Java,
+                            Spring Boot, and Modern Web Technologies.
+                        </p>
+
+                        {/* Live Status Indicator */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-900/20 border border-green-500/30 rounded-full">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span className="text-xs font-medium text-green-400">
+                                Available for new projects
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-8 md:pl-20">
+                        {/* Sitemap */}
+                        <div>
+                            <h3 className="text-white font-bold mb-4">
+                                Sitemap
+                            </h3>
+                            <ul className="space-y-3">
+                                {[
+                                    "About",
+                                    "Projects",
+                                    "Experience",
+                                    "Contact",
+                                ].map((item) => (
+                                    <li key={item}>
+                                        <a
+                                            href={`#${item.toLowerCase()}`}
+                                            className="text-neutral-500 hover:text-purple-400 transition-colors text-sm"
+                                        >
+                                            {item}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Socials */}
+                        <div>
+                            <h3 className="text-white font-bold mb-4">
+                                Socials
+                            </h3>
+                            <ul className="space-y-3">
+                                <li>
+                                    <a
+                                        href="https://github.com/Shaanworkspace"
+                                        className="text-neutral-500 hover:text-white transition-colors text-sm flex items-center gap-2"
+                                    >
+                                        <FaGithub /> GitHub
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/shaanyadv/"
+                                        className="text-neutral-500 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"
+                                    >
+                                        <FaLinkedinIn /> LinkedIn
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://x.com/ShaanYadav54660"
+                                        className="text-neutral-500 hover:text-sky-400 transition-colors text-sm flex items-center gap-2"
+                                    >
+                                        <FaXTwitter /> Twitter
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* BOTTOM SECTION: Copyright & Tech Stack */}
+                <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-neutral-600 text-sm">
+                        © {currentYear} Shaan Yadav. All rights reserved.
+                    </p>
+
+                    <div className="flex items-center gap-6">
+                        <p className="text-neutral-600 text-xs hidden sm:block">
+                            Built with{" "}
+                            <span className="text-neutral-400">
+                                React & Tailwind
+                            </span>
+                        </p>
+
+                        {/* Back to Top Button */}
+                        <button
+                            onClick={scrollToTop}
+                            className="group flex items-center gap-2 text-neutral-500 hover:text-white transition-colors text-sm"
+                        >
+                            Back to Top
+                            <span className="p-2 bg-neutral-900 rounded-full group-hover:bg-neutral-800 transition-colors">
+                                <FaArrowUp size={10} />
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;

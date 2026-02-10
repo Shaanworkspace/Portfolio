@@ -1,131 +1,225 @@
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaCopy } from 'react-icons/fa';
-import { CONTACT } from '../constants';
-import { useState } from 'react';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+    FaMapMarkerAlt,
+    FaPhoneAlt,
+    FaEnvelope,
+    FaCopy,
+    FaCheck,
+    FaArrowRight,
+    FaLinkedin,
+    FaGithub,
+    FaTwitter,
+} from "react-icons/fa";
+import { CONTACT } from "../constants";
 
 const ContactSection = () => {
-  const [copied, setCopied] = useState({ phone: false, email: false });
+    // State for copy feedback
+    const [copied, setCopied] = useState(null);
 
-  const handleCopy = (text, type) => {
-    navigator.clipboard.writeText(text);
-    setCopied({ ...copied, [type]: true });
-    setTimeout(() => setCopied({ ...copied, [type]: false }), 1200);
-  };
+    const handleCopy = (text, type) => {
+        navigator.clipboard.writeText(text);
+        setCopied(type);
+        setTimeout(() => setCopied(null), 2000);
+    };
 
-  return (
-    <section className="w-full px-4 py-12 md:py-16 lg:py-20 bg-gradient-to-b from-black via-zinc-900 to-black border-t border-neutral-800">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white text-center mb-10 tracking-tight">
-          Get in{" "}
-          <span className="bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-            Touch
-          </span>
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {/* Address */}
-          <a
-            href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group bg-neutral-900 p-6 md:p-7 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-400"
-            aria-label="Open address in Google Maps"
-          >
-            <div className="flex items-center mb-4">
-              <FaMapMarkerAlt className="text-fuchsia-400 text-xl md:text-2xl mr-3" />
-              <h3 className="text-base md:text-lg font-bold text-white">
-                Address
-              </h3>
-            </div>
-            <p className="text-neutral-300 text-sm md:text-base">
-              {CONTACT.address}
-            </p>
-            <p className="mt-3 text-xs md:text-sm text-fuchsia-400 underline group-hover:text-fuchsia-300">
-              View on Google Maps
-            </p>
-          </a>
+    const socialLinks = [
+        {
+            icon: FaLinkedin,
+            href: "https://www.linkedin.com/in/shaanyadv/",
+            color: "hover:text-blue-500",
+        },
+        {
+            icon: FaGithub,
+            href: "https://github.com/Shaanworkspace",
+            color: "hover:text-white",
+        },
+        {
+            icon: FaTwitter,
+            href: "https://x.com/ShaanYadav54660",
+            color: "hover:text-sky-500",
+        },
+    ];
 
-          {/* Phone */}
-          <div className="group bg-neutral-900 p-6 md:p-7 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-fuchsia-500 focus-within:ring-2 focus-within:ring-fuchsia-400">
-            <div className="flex items-center mb-4">
-              <FaPhoneAlt className="text-fuchsia-400 text-xl md:text-2xl mr-3" />
-              <h3 className="text-base md:text-lg font-bold text-white">
-                Phone
-              </h3>
+    return (
+        <section
+            id="contact"
+            className="py-20 lg:py-32 relative overflow-hidden border-t border-neutral-800/50"
+        >
+            {/* Background Glows */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-900/10 rounded-full blur-[128px] -z-10" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[128px] -z-10" />
+
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    {/* LEFT SIDE: The Pitch */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center lg:text-left"
+                    >
+                        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                            Let's build something <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                                legendary.
+                            </span>
+                        </h2>
+                        <p className="text-neutral-400 text-lg mb-8 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                            I'm currently available for freelance projects and
+                            open to full-time opportunities. If you have a
+                            project that needs some creative & technical magic,
+                            I'd love to hear about it.
+                        </p>
+
+                        {/* Social Proof / Quick Links */}
+                        <div className="flex items-center justify-center lg:justify-start gap-4">
+                            <span className="text-sm font-semibold text-neutral-500 uppercase tracking-wider">
+                                Follow Me
+                            </span>
+                            <div className="h-px w-10 bg-neutral-800" />
+                            <div className="flex gap-4">
+                                {socialLinks.map((social, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className={`text-neutral-400 text-xl transition-colors duration-300 ${social.color}`}
+                                    >
+                                        <social.icon />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* RIGHT SIDE: The Action Cards */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col gap-4"
+                    >
+                        {/* Email Card */}
+                        <ContactCard
+                            icon={FaEnvelope}
+                            label="Email"
+                            value={CONTACT.email}
+                            action={() =>
+                                (window.location.href = `mailto:${CONTACT.email}`)
+                            }
+                            onCopy={() => handleCopy(CONTACT.email, "email")}
+                            isCopied={copied === "email"}
+                            color="text-fuchsia-400"
+                            btnText="Send Email"
+                        />
+
+                        {/* Phone Card */}
+                        <ContactCard
+                            icon={FaPhoneAlt}
+                            label="Phone"
+                            value={CONTACT.phoneNo}
+                            action={() =>
+                                (window.location.href = `tel:${CONTACT.phoneNo}`)
+                            }
+                            onCopy={() => handleCopy(CONTACT.phoneNo, "phone")}
+                            isCopied={copied === "phone"}
+                            color="text-green-400"
+                            btnText="Call Now"
+                        />
+
+                        {/* Address Card */}
+                        <ContactCard
+                            icon={FaMapMarkerAlt}
+                            label="Location"
+                            value={CONTACT.address}
+                            action={() =>
+                                window.open(
+                                    `https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`,
+                                    "_blank",
+                                )
+                            }
+                            color="text-blue-400"
+                            btnText="View Map"
+                            hideCopy={true}
+                        />
+                    </motion.div>
+                </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <a
-                href={`tel:${CONTACT.phoneNo}`}
-                className="text-neutral-300 text-sm md:text-base hover:text-fuchsia-300 underline transition-colors"
-                aria-label={`Call ${CONTACT.phoneNo}`}
-              >
-                {CONTACT.phoneNo}
-              </a>
-              <button
-                className="p-1 rounded-full bg-neutral-800 hover:bg-fuchsia-600 transition-colors"
-                title="Copy phone number"
-                onClick={() => handleCopy(CONTACT.phoneNo, "phone")}
-              >
-                <FaCopy
-                  className={`text-xs md:text-sm ${
-                    copied.phone ? "text-green-400" : "text-neutral-400"
-                  }`}
-                />
-              </button>
-              {copied.phone && (
-                <span className="text-xs text-green-400">Copied!</span>
-              )}
-            </div>
-            <a
-              href={`sms:${CONTACT.phoneNo}`}
-              className="mt-3 inline-block text-xs md:text-sm text-fuchsia-400 underline hover:text-fuchsia-300 transition-colors"
-              aria-label={`Send SMS to ${CONTACT.phoneNo}`}
+        </section>
+    );
+};
+
+// --- REUSABLE CARD COMPONENT ---
+const ContactCard = ({
+    icon: Icon,
+    label,
+    value,
+    action,
+    onCopy,
+    isCopied,
+    color,
+    btnText,
+    hideCopy,
+}) => {
+    return (
+        <div className="group relative flex items-center gap-4 p-4 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900 transition-all duration-300">
+            {/* Icon Box */}
+            <div
+                className={`flex-shrink-0 w-12 h-12 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center ${color} group-hover:scale-110 transition-transform`}
             >
-              Send SMS
-            </a>
-          </div>
+                <Icon size={20} />
+            </div>
 
-          {/* Email */}
-          <div className="group bg-neutral-900 p-6 md:p-7 rounded-2xl shadow-lg border border-neutral-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-fuchsia-500 focus-within:ring-2 focus-within:ring-fuchsia-400">
-            <div className="flex items-center mb-4">
-              <FaEnvelope className="text-fuchsia-400 text-xl md:text-2xl mr-3" />
-              <h3 className="text-base md:text-lg font-bold text-white">
-                Email
-              </h3>
+            {/* Text Content */}
+            <div className="flex-1 min-w-0">
+                <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-0.5">
+                    {label}
+                </p>
+                <p className="text-sm sm:text-base text-white font-medium truncate group-hover:text-purple-100 transition-colors">
+                    {value}
+                </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="text-neutral-300 text-sm md:text-base hover:text-fuchsia-300 underline transition-colors"
-                aria-label={`Email ${CONTACT.email}`}
-              >
-                {CONTACT.email}
-              </a>
-              <button
-                className="p-1 rounded-full bg-neutral-800 hover:bg-fuchsia-600 transition-colors"
-                title="Copy email"
-                onClick={() => handleCopy(CONTACT.email, "email")}
-              >
-                <FaCopy
-                  className={`text-xs md:text-sm ${
-                    copied.email ? "text-green-400" : "text-neutral-400"
-                  }`}
-                />
-              </button>
-              {copied.email && (
-                <span className="text-xs text-green-400">Copied!</span>
-              )}
+
+            {/* Actions */}
+            <div className="flex items-center gap-2">
+                {/* Copy Button (if applicable) */}
+                {!hideCopy && (
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onCopy();
+                        }}
+                        className="p-2 rounded-lg text-neutral-500 hover:bg-neutral-800 hover:text-white transition-colors"
+                        title="Copy to clipboard"
+                    >
+                        {isCopied ? (
+                            <FaCheck className="text-green-500" />
+                        ) : (
+                            <FaCopy />
+                        )}
+                    </button>
+                )}
+
+                {/* Primary Action Button */}
+                <button
+                    onClick={action}
+                    className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-neutral-800 text-sm font-semibold text-white hover:bg-white hover:text-black transition-all group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                >
+                    {btnText} <FaArrowRight size={12} />
+                </button>
+
+                {/* Mobile Arrow (Replaces text button on small screens) */}
+                <button
+                    onClick={action}
+                    className="sm:hidden p-2 text-neutral-400 hover:text-white"
+                >
+                    <FaArrowRight />
+                </button>
             </div>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="mt-3 inline-block text-xs md:text-sm text-fuchsia-400 underline hover:text-fuchsia-300 transition-colors"
-              aria-label={`Send email to ${CONTACT.email}`}
-            >
-              Send Email
-            </a>
-          </div>
         </div>
-      </div>
-    </section>
-  );
+    );
 };
 
 export default ContactSection;
