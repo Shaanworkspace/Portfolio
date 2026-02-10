@@ -1,12 +1,14 @@
 import React from "react";
 import { HERO_CONTENT } from "../constants";
 import shaanPhoto from "../assets/shaanProfilePhoto.jpg";
+import resumeFile from "../assets/projects/ShaanResume_Spring_new.pdf";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaFileDownload } from "react-icons/fa";
+import { FaFileDownload } from "react-icons/fa";
 
 const HeroSection = () => {
     return (
-        <div className="border-b border-neutral-800 pb-16 lg:mb-32 mt-10 lg:mt-24">
+        // Added 'group' class here so the hover effect works on the entire section
+        <div className="group border-b border-neutral-800 pb-16 lg:mb-32 mt-10 lg:mt-24">
             <div className="flex flex-wrap flex-col-reverse lg:flex-row items-center">
                 {/* Text Content */}
                 <div className="w-full lg:w-1/2 p-4 lg:pr-12">
@@ -24,7 +26,7 @@ const HeroSection = () => {
                         </h1>
                         <h2 className="text-2xl lg:text-3xl font-light text-neutral-400 mb-6 text-center lg:text-left">
                             Full Stack{" "}
-                            <span className="text-purple-500 font-normal">
+                            <span className="text-purple-500 font-normal transition-colors duration-500 group-hover:text-cyan-400">
                                 Java Developer
                             </span>
                         </h2>
@@ -33,10 +35,9 @@ const HeroSection = () => {
                         </p>
 
                         <div className="flex gap-4">
-                            {/* Add your resume link below */}
                             <a
-                                href="/resume.pdf"
-                                download
+                                href={resumeFile}
+                                download="Shaan_Yadav_Resume.pdf"
                                 className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:bg-neutral-200 transition-colors"
                             >
                                 <FaFileDownload /> Resume
@@ -51,7 +52,7 @@ const HeroSection = () => {
                     </motion.div>
                 </div>
 
-                {/* Image */}
+                {/* Image Section */}
                 <div className="w-full lg:w-1/2 p-4 lg:p-8 flex justify-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -59,13 +60,14 @@ const HeroSection = () => {
                         transition={{ duration: 0.8 }}
                         className="relative"
                     >
-                        {/* Abstract Background Element */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur-2xl opacity-30 transform rotate-6"></div>
+                        {/* Abstract Background Element - Brightens on section hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur-2xl opacity-30 transform rotate-6 transition-opacity duration-700 group-hover:opacity-60"></div>
 
                         <img
                             src={shaanPhoto}
                             alt="Shaan Yadav"
-                            className="relative z-10 w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-2xl border-2 border-neutral-800 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                            // group-hover:grayscale-0 reacts to the top-level div
+                            className="relative z-10 w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-2xl border-2 border-neutral-800 shadow-2xl grayscale transition-all duration-700 ease-in-out group-hover:grayscale-0 group-hover:scale-105"
                         />
                     </motion.div>
                 </div>
