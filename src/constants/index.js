@@ -17,7 +17,7 @@ I am currently seeking opportunities to leverage my skills in Java, Spring Boot,
 
 export const EXPERIENCES = [
     {
-        year: "2024",
+        year: "2025",
         role: "AWS Certified Cloud Practitioner",
         company: "Amazon Web Services (AWS)",
         description:
@@ -32,7 +32,7 @@ export const EXPERIENCES = [
         type: "certification", // New type for styling
     },
     {
-        year: "2024",
+        year: "2025",
         role: "AWS Certified AI Practitioner",
         company: "Amazon Web Services (AWS)",
         description:
@@ -46,7 +46,7 @@ export const EXPERIENCES = [
         type: "certification",
     },
     {
-        year: "2024 - Present",
+        year: "2026 - Present",
         role: "Open Source Contributor",
         company: "rtCamp",
         description:
@@ -55,7 +55,7 @@ export const EXPERIENCES = [
         type: "work",
     },
     {
-        year: "2023 - 2024",
+        year: "2025 - Present",
         role: "Full Stack Developer Intern",
         company: "School Timetable Automation System",
         description:
