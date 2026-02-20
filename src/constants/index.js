@@ -7,7 +7,7 @@ import stonepaper from "../assets/projects/stonepaper.png";
 import tictac from "../assets/projects/tic-tac.png";
 import sympai from "../assets/projects/Symptom-AI.png";
 
-export const HERO_CONTENT = `Full Stack Developer & AI Enthusiast specializing in building scalable web applications. I bridge the gap between complex backend logic and intuitive frontend design using Java, Spring Boot, and React.`;
+export const HERO_CONTENT = `Experienced Full Stack Developer & AI Enthusiast specializing in building scalable web applications. I bridge the gap between complex backend logic and intuitive frontend design using Java, Spring Boot, and React.`;
 
 export const ABOUT_TEXT = `I am a Computer Science undergraduate at KIET Group of Institutions with a focus on Full Stack Development and Artificial Intelligence. 
 
@@ -16,6 +16,15 @@ My technical journey is defined by a hands-on approach—whether it's architecti
 I am currently seeking opportunities to leverage my skills in Java, Spring Boot, and Modern JavaScript frameworks to solve real-world problems.`;
 
 export const EXPERIENCES = [
+    {
+        year: "2026 - Present",
+        role: "Open Source Contributor",
+        company: "rtCamp",
+        description:
+            "Actively contributing to enterprise-level open source repositories. Merged 1 Pull Request involving frontend optimization and documentation improvements.",
+        technologies: ["SCSS", "Git", "Open Source"],
+        type: "work",
+    },
     {
         year: "2025",
         role: "AWS Certified Cloud Practitioner",
@@ -46,26 +55,17 @@ export const EXPERIENCES = [
         type: "certification",
     },
     {
-        year: "2026 - Present",
-        role: "Open Source Contributor",
-        company: "rtCamp",
-        description:
-            "Actively contributing to enterprise-level open source repositories. Merged 1 Pull Request involving frontend optimization and documentation improvements.",
-        technologies: ["SCSS", "Git", "Open Source"],
-        type: "work",
-    },
-    {
-        year: "2025 - Present",
-        role: "Full Stack Developer Intern",
-        company: "School Timetable Automation System",
-        description:
-            "Engineered a rule-based scheduling algorithm to automate class allocations. Built a RESTful backend using Spring Boot and designed a dynamic React dashboard for real-time timetable visualization.",
+        year: "June 2025 - Aug 2025",
+        role: "Full Stack Java Developer Intern",
+        company: "Vithal Visions Private Limited",
+        description:"Engineered Multi-Module applications with Spring Boot, and React.js, adhering to RESTful principles ,Deployed on Cloud Azure and enhancing modular scalability by 30%.",
         technologies: [
             "Java",
             "Spring Boot",
             "ReactJS",
             "MySQL",
-            "Algorithm Design",
+			"Algorithm Design",
+			"Cloud Azure"
         ],
         type: "work",
     },
@@ -75,7 +75,7 @@ export const EXPERIENCES = [
         company: "KIET Group of Institutions",
         description:
             "Specialization in AI & ML. Active member of Google Developer Group (GDG).",
-        technologies: ["Data Structures", "OOPs", "System Design"],
+        technologies: ["Data Structures", "OOPs", "System Design", "AIML"],
         type: "education",
     },
 ];
@@ -97,12 +97,13 @@ export const PROJECTS = [
             "RabbitMQ",
             "Docker",
             "Redis",
-            "AWS Lambda",
+			"AWS Lambda",
+			"Oracle Cloud",
         ],
         liveDemo: "https://ayursutra.me",
         frontendLink: "https://github.com/Shaanworkspace/Ayursutra-frontend",
         backendLink: "https://github.com/Shaanworkspace/Ayursutra-userMS",
-        isLatest: true, // Tag for styling
+        isLatest: true, 
     },
     {
         title: "MediPlan - Hospital Management",
