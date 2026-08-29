@@ -36,10 +36,10 @@ const AboutSection = () => {
                             <img
                                 src={aboutImage}
                                 alt="Shaan Yadav"
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
+                                className="w-full h-full object-cover"
                             />
                             {/* Overlay Gradient for text readability if needed, mostly for style */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                         </div>
 
                         {/* Floating Badge */}

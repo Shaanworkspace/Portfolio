@@ -36,11 +36,11 @@ export default function App() {
                     <div className="space-y-32">
                         {" "}
                         {/* Increased spacing for breathing room */}
+                        <YoutubeSection /> {/* Content Creation */}
                         <AboutSection />
                         <SkillsSection />
                         <WorkExperience /> {/* The Timeline */}
                         <Projects /> {/* The Grid */}
-                        <YoutubeSection /> {/* Content Creation */}
                         <ContactSection />
                     </div>
                 </Suspense>

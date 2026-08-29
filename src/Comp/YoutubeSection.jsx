@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { YOUTUBE } from "../constants";
+import { YOUTUBE, YOUTUBE_API_KEY, YOUTUBE_CHANNEL_ID } from "../constants";
 import {
     FaYoutube,
     FaPlay,
@@ -8,16 +8,51 @@ import {
     FaVideo,
     FaFire,
     FaArrowRight,
+    FaTrophy,
 } from "react-icons/fa";
 
 const YoutubeSection = () => {
-    const { handle, channelUrl, tagline, subscribers, videos, playlists, featured } =
-        YOUTUBE;
+    const {
+        handle,
+        channelUrl,
+        tagline,
+        subscribers,
+        videos,
+        watchTime,
+        playlists,
+        featured,
+        companies,
+    } = YOUTUBE;
+
+    const [liveSubs, setLiveSubs] = useState(null);
+
+    // Live subscriber count (falls back to static value if no API key)
+    useEffect(() => {
+        if (
+            !YOUTUBE_API_KEY ||
+            YOUTUBE_API_KEY === "YOUR_YOUTUBE_DATA_API_KEY"
+        ) {
+            return;
+        }
+        const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YOUTUBE_CHANNEL_ID}&key=${YOUTUBE_API_KEY}`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                const count =
+                    data?.items?.[0]?.statistics?.subscriberCount;
+                if (count) {
+                    setLiveSubs(
+                        Number(count).toLocaleString("en-US") + "+",
+                    );
+                }
+            })
+            .catch(() => {});
+    }, []);
 
     const stats = [
-        { icon: FaUsers, value: subscribers, label: "Subscribers" },
+        { icon: FaUsers, value: liveSubs || subscribers, label: "Subscribers (Live)" },
         { icon: FaVideo, value: videos, label: "Videos Published" },
-        { icon: FaFire, value: "Top 6%", label: "Watch Time" },
+        { icon: FaFire, value: watchTime, label: "Watch Time Rank" },
     ];
 
     return (
@@ -43,15 +78,16 @@ const YoutubeSection = () => {
                             <FaYoutube /> CONTENT CREATION
                         </span>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                            Teaching Beyond{" "}
+                            Teaching DSA,{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-500">
-                                the Code
+                                Beyond the Code
                             </span>
                         </h2>
                         <p className="text-lg text-neutral-400 leading-relaxed">
                             I don't just build systems — I break them down for
                             the community. On <span className="text-white font-medium">YouTube</span>,
-                            I simplify DSA, System Design, and Java backend
+                            I solve <span className="text-white font-medium">company-specific DSA</span>{" "}
+                            asked by top tech firms and explain backend
                             engineering for thousands of developers.
                         </p>
                     </div>
@@ -63,6 +99,27 @@ const YoutubeSection = () => {
                     >
                         <FaYoutube /> Subscribe
                     </a>
+                </motion.div>
+
+                {/* Company tag row — what a recruiter notices in 10 seconds */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="flex flex-wrap items-center gap-2 mb-12"
+                >
+                    <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mr-2">
+                        DSA prep for:
+                    </span>
+                    {companies.map((c) => (
+                        <span
+                            key={c}
+                            className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-900 border border-neutral-800 text-neutral-300"
+                        >
+                            {c}
+                        </span>
+                    ))}
                 </motion.div>
 
                 {/* Channel Card + Stats */}
@@ -160,11 +217,14 @@ const YoutubeSection = () => {
                     </div>
                 </div>
 
-                {/* Featured Videos */}
+                {/* Featured Videos (real thumbnails) */}
                 <div>
-                    <h3 className="text-xl font-bold text-white mb-5">
-                        Latest Videos
-                    </h3>
+                    <div className="flex items-center justify-between mb-5">
+                        <h3 className="text-xl font-bold text-white">
+                            Latest & Highest-Viewed Videos
+                        </h3>
+                        <FaTrophy className="text-yellow-500" />
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                         {featured.map((vid, i) => (
                             <motion.a
@@ -182,6 +242,7 @@ const YoutubeSection = () => {
                                     <img
                                         src={`https://img.youtube.com/vi/${vid.id}/mqdefault.jpg`}
                                         alt={vid.title}
+                                        loading="lazy"
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-black/40 group-hover:bg-red-900/20 transition-colors flex items-center justify-center">
@@ -191,6 +252,11 @@ const YoutubeSection = () => {
                                     </div>
                                 </div>
                                 <div className="p-4">
+                                    {vid.company && (
+                                        <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded bg-red-600/15 text-red-400">
+                                            {vid.company}
+                                        </span>
+                                    )}
                                     <p className="text-sm text-neutral-300 line-clamp-2 group-hover:text-white transition-colors">
                                         {vid.title}
                                     </p>

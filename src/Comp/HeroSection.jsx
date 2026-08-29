@@ -67,7 +67,7 @@ const HeroSection = () => {
                             src={shaanPhoto}
                             alt="Shaan Yadav"
                             // group-hover:grayscale-0 reacts to the top-level div
-                            className="relative z-10 w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-2xl border-2 border-neutral-800 shadow-2xl grayscale transition-all duration-700 ease-in-out group-hover:grayscale-0 group-hover:scale-105"
+                            className="relative z-10 w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-2xl border-2 border-neutral-800 shadow-2xl"
                         />
                     </motion.div>
                 </div>

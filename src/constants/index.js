@@ -148,6 +148,14 @@ export const PROJECTS = [
         frontendLink: "https://github.com/Shaanworkspace/Amazon-home-page",
         vercelLink: "https://amazon-home-page-ruddy.vercel.app/",
     },
+    {
+        title: "BookMyShow Clone — Ticket Booking",
+        image: amazonpage,
+        photo: amazonpage,
+        description:
+            "Full-stack movie & event ticket booking platform with real-time seat selection, show scheduling, and secure checkout. Built with a Spring Boot backend and a responsive React frontend.",
+        technologies: ["Java", "Spring Boot", "ReactJS", "MySQL", "REST APIs"],
+    },
 ];
 
 export const CONTACT = {
@@ -157,6 +165,13 @@ export const CONTACT = {
 };
 
 // YOUTUBE / CONTENT CREATION
+// 🔑 For LIVE subscriber count: create a free YouTube Data API v3 key at
+//    https://console.cloud.google.com/  and paste it below.
+//    Restrict it to "YouTube Data API v3" + HTTP referrer = your site.
+//    If left as placeholder, the static `subscribers` fallback is shown.
+export const YOUTUBE_API_KEY = "YOUR_YOUTUBE_DATA_API_KEY";
+export const YOUTUBE_CHANNEL_ID = "UCB5lJCxtADlVxi9GmiYDe4w";
+
 export const YOUTUBE = {
     handle: "@Shaan_Labs",
     channelUrl: "https://www.youtube.com/@Shaan_Labs?sub_confirmation=1",
@@ -197,19 +212,25 @@ export const YOUTUBE = {
             count: "Public",
         },
     ],
-    // Replace VIDEO_ID_x with real IDs from your video URLs (youtu.be/ID)
+    // Real video IDs pulled from the channel feed (thumbnails now render)
     featured: [
         {
-            id: "VIDEO_ID_1",
-            title: "Kth Smallest Amount With Single Denomination | LeetCode 3116",
+            id: "7M5d80mRqG8",
+            title:
+                "Lexicographically Smallest Permutation | LEETCODE 3720 (Highest Viewed)",
+            company: "LeetCode",
         },
         {
-            id: "VIDEO_ID_2",
-            title: "Lexicographically Smallest Permutation | LeetCode 3720",
+            id: "WnN8s9bI30s",
+            title:
+                "Sum Game | LeetCode 1927 | ByteDance & DE Shaw Company Interview",
+            company: "ByteDance · DE Shaw",
         },
         {
-            id: "VIDEO_ID_3",
-            title: "System Design: Designing a Scalable Backend",
+            id: "Qs2Pmx8G3h4",
+            title: "Two Sum | LEETCODE 1 | Most Asked Interview Question",
+            company: "Meta · Amazon · Google",
         },
     ],
+    companies: ["Infosys", "TCS", "Wipro", "Amazon", "Meta", "ByteDance", "DE Shaw"],
 };
