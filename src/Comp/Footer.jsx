@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaLinkedinIn, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaArrowUp, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CONTACT } from "../constants";
 
@@ -91,10 +91,18 @@ const Footer = () => {
                                         href="https://x.com/ShaanYadav54660"
                                         className="text-neutral-500 hover:text-sky-400 transition-colors text-sm flex items-center gap-2"
                                     >
-                                        <FaXTwitter /> Twitter
-                                    </a>
-                                </li>
-                            </ul>
+                                <FaXTwitter /> Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.youtube.com/@Shaan_Labs"
+                                className="text-neutral-500 hover:text-red-500 transition-colors text-sm flex items-center gap-2"
+                            >
+                                <FaYoutube /> YouTube
+                            </a>
+                        </li>
+                    </ul>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import {
     FaMedium,
     FaBars,
     FaTimes,
+    FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -35,6 +36,7 @@ const Header = () => {
             href: "https://www.linkedin.com/in/shaanyadv/",
         },
         { icon: <FaXTwitter />, href: "https://x.com/ShaanYadav54660" },
+        { icon: <FaYoutube />, href: "https://www.youtube.com/@Shaan_Labs" },
     ];
 
     return (
