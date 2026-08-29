@@ -9,6 +9,7 @@ const AboutSection = lazy(() => import("./Comp/AboutSection.jsx"));
 const SkillsSection = lazy(() => import("./Comp/SkillsSection.jsx"));
 const WorkExperience = lazy(() => import("./Comp/WorkExperience.jsx")); // Renamed Timeline
 const Projects = lazy(() => import("./Comp/Projects.jsx")); // Renamed Grid
+const YoutubeSection = lazy(() => import("./Comp/YoutubeSection.jsx"));
 const ContactSection = lazy(() => import("./Comp/ContactSection.jsx"));
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
                         <SkillsSection />
                         <WorkExperience /> {/* The Timeline */}
                         <Projects /> {/* The Grid */}
+                        <YoutubeSection /> {/* Content Creation */}
                         <ContactSection />
                     </div>
                 </Suspense>

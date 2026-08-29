@@ -10,6 +10,7 @@ import {
     FaLinkedin,
     FaGithub,
     FaTwitter,
+    FaYoutube,
 } from "react-icons/fa";
 import { CONTACT } from "../constants";
 
@@ -38,6 +39,11 @@ const ContactSection = () => {
             icon: FaTwitter,
             href: "https://x.com/ShaanYadav54660",
             color: "hover:text-sky-500",
+        },
+        {
+            icon: FaYoutube,
+            href: "https://www.youtube.com/@Shaan_Labs",
+            color: "hover:text-red-500",
         },
     ];
 

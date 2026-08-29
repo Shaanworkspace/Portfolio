@@ -2,14 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import aboutImage from "../assets/about.jpg";
 import { ABOUT_TEXT } from "../constants";
-import { FaCode, FaProjectDiagram, FaLayerGroup } from "react-icons/fa";
+import { FaCode, FaProjectDiagram, FaLayerGroup, FaYoutube } from "react-icons/fa";
 
 const AboutSection = () => {
     // Stats Data configuration
     const stats = [
         { number: "2+", label: "Years Experience", icon: FaCode },
         { number: "10+", label: "Projects Completed", icon: FaProjectDiagram },
-        { number: "15+", label: "Tech Stack", icon: FaLayerGroup }, // Updated numbers to look realistic
+        { number: "300+", label: "Videos Published", icon: FaYoutube }, // Updated numbers to look realistic
     ];
 
     return (

@@ -7,7 +7,7 @@ import stonepaper from "../assets/projects/stonepaper.png";
 import tictac from "../assets/projects/tic-tac.png";
 import sympai from "../assets/projects/Symptom-AI.png";
 
-export const HERO_CONTENT = `Experienced Full Stack Developer & AI Enthusiast specializing in building scalable web applications. I bridge the gap between complex backend logic and intuitive frontend design using Java, Spring Boot, and React.`;
+export const HERO_CONTENT = `Experienced Full Stack Java Developer & AI Enthusiast who builds scalable systems with Spring Boot & React — and teaches 300+ developers the "why" behind every solution on YouTube @Shaan_Labs (DSA, System Design & Backend Engineering).`;
 
 export const ABOUT_TEXT = `I am a Computer Science undergraduate at KIET Group of Institutions with a focus on Full Stack Development and Artificial Intelligence. 
 
@@ -154,4 +154,62 @@ export const CONTACT = {
     address: "Ghaziabad, Uttar Pradesh, India",
     phoneNo: "+91-8542029975",
     email: "shaanyworkspace@gmail.com",
+};
+
+// YOUTUBE / CONTENT CREATION
+export const YOUTUBE = {
+    handle: "@Shaan_Labs",
+    channelUrl: "https://www.youtube.com/@Shaan_Labs?sub_confirmation=1",
+    tagline:
+        "Backend Engineering · System Design · DSA · Full-Stack Project Builds",
+    subscribers: "490+",
+    videos: "300+",
+    watchTime: "Top 6%",
+    playlists: [
+        {
+            title: "LeetCode Daily Challenge",
+            desc: "Java solutions, walkthroughs & optimal approaches",
+            count: "38 videos",
+        },
+        {
+            title: "SQL Interview Questions",
+            desc: "Most-asked queries — Amazon, TCS, Flipkart",
+            count: "5 videos",
+        },
+        {
+            title: "AWS + Docker + Kubernetes",
+            desc: "Complete deployment series for developers",
+            count: "2 videos",
+        },
+        {
+            title: "Josh Interview DSA",
+            desc: "Company-specific DSA question breakdowns",
+            count: "3 videos",
+        },
+        {
+            title: "RAG & AI Engineering",
+            desc: "Retrieval-augmented generation & applied AI",
+            count: "1 video",
+        },
+        {
+            title: "GFG Practice",
+            desc: "GeeksforGeeks problem explanations",
+            count: "Public",
+        },
+    ],
+    // Replace VIDEO_ID_x with real IDs from your video URLs (youtu.be/ID)
+    featured: [
+        {
+            id: "VIDEO_ID_1",
+            title: "Kth Smallest Amount With Single Denomination | LeetCode 3116",
+        },
+        {
+            id: "VIDEO_ID_2",
+            title: "Lexicographically Smallest Permutation | LeetCode 3720",
+        },
+        {
+            id: "VIDEO_ID_3",
+            title: "System Design: Designing a Scalable Backend",
+        },
+    ],
 };
